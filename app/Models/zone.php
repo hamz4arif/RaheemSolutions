@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class zone extends Model
+class Zone extends Model
 {
     use HasFactory;
     protected $table='ts_zones';

@@ -10,7 +10,7 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $zone_array = array("1"=>"North","2"=>"South","3"=>"East","4"=>"West");
+        $zone_array = Zone::all()->keyBy('id');
         $location_type_array = array("0"=>"Metro","1"=>"Outstanding");
         $status_array = array("0"=>"Enable","1"=>"Disable");
         $region_array = array("0"=>"Region 1","1"=>"Region 2");
@@ -27,7 +27,7 @@ class LocationController extends Controller
     }
 
     public function create(){
-        $zone_array = array("1"=>"North","2"=>"South","3"=>"East","4"=>"West");
+        $zone_array = Zone::all()->keyBy('id');
         $location_type_array = array("0"=>"Metro","1"=>"Outstanding");
         $status_array = array("0"=>"Enable","1"=>"Disable");
         $region_array = array("0"=>"Region 1","1"=>"Region 2");
@@ -42,7 +42,7 @@ class LocationController extends Controller
     }
 
     public function edit($id){
-        $zone_array = array("1"=>"North","2"=>"South","3"=>"East","4"=>"West");
+        $zone_array = Zone::all()->keyBy('id');
         $location_type_array = array("0"=>"Metro","1"=>"Outstanding");
         $status_array = array("0"=>"Enable","1"=>"Disable");
         $region_array = array("0"=>"Region 1","1"=>"Region 2");
