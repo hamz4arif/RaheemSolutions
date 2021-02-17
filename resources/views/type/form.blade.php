@@ -27,19 +27,33 @@
   <div class="form-row">
 
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Purpose</label>
             <select class="form-control" id="exampleFormControlSelect1" name="purpose">
               @foreach($purpose as $key => $sl)
-                <option value="{{$key}}" {{ ( $key == $model->purpose_id) ? 'selected' : '' }}>{{$sl}}</option>
+                <option value="{{$key}}" {{ ( $key == $model->purpose_id) ? 'selected' : '' }}>{{$sl->name}}</option>
               @endforeach
             </select>
         </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationDefault04">Description</label>
       <input type="text" class="form-control" id="validationDefault04" value="{{$model->alias}}" placeholder="Description" name="description" required>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Item</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="item[]" multiple>
+              @foreach($item as $key => $sl)
+                @if(!empty($item_id) && in_array($key,$item_id))
+                <option value="{{$key}}" selected>{{$sl->name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->name}}</option>
+                @endif
+              @endforeach
+            </select>
+        </div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>

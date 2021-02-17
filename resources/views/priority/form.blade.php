@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Base SLA</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->base_sla}}" placeholder="Base SLA" name="base_sla" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->base_sla}}" placeholder="(hh:mm:ss)" name="base_sla" required>
     </div>
   </div>
   <div class="form-row">

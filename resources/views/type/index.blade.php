@@ -31,7 +31,7 @@
                         Status
                       </th>
                       <th>
-                        Purpose Id
+                        Purpose
                       </th>
                       <th>
                         Created at
@@ -49,7 +49,7 @@
                             <td>{{  $type->name }}</td>
                             <td>{{  $type->alias }}</td>
                             <td>{{  $status[$type->status] }}</td>
-                            <td>{{  $purpose[$type->purpose_id] }}</td>
+                            <td>{{  isset($purpose[$type->purpose_id]) ? $purpose[$type->purpose_id]->name : ""}}</td>
                             <td>{{  date("d M, Y" ,strtotime($type->created_at)) }}</td>
                             <td>{{  $type->description }}</td>
                             <td class="text-right">

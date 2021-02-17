@@ -35,7 +35,7 @@
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Status</label>
+            <label for="exampleFormControlSelect1">Department</label>
             <select class="form-control" id="exampleFormControlSelect1" name="department">
               @foreach($department as $key => $st)
                 <option value="{{$st->dprt_id}}" {{ ( $st->dprt_id == $model->department_id) ? 'selected' : '' }}>{{$st->name}}</option>

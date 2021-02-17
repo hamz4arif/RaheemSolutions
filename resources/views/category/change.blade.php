@@ -16,6 +16,10 @@
                         'model' => $model,
                         'status' => $status,
                         'sla' => $sla,
+                        'type' => $type,
+                        'client' => $client,
+                        'client_id' => $client_id,
+                        'type_id' => $type_id
                     ])
                 </div>
             </div>

@@ -16,6 +16,8 @@
                         'model' => $model,
                         'status' => $status,
                         'sla' => $sla,
+                        'type' => $type,
+                        'client' => $client
                     ])
                 </div>
             </div>

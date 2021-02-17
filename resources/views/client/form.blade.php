@@ -35,6 +35,34 @@
             </select>
         </div>
     </div>
+    <div class="col-md-4 mb-3">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Location</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="location[]" multiple>
+              @foreach($location as $key => $sl)
+                @if(!empty($location_id) && in_array($key,$location_id))
+                <option value="{{$key}}" selected>{{$sl->name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->name}}</option>
+                @endif
+              @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Campaign</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="campaign[]" multiple>
+              @foreach($campaign as $key => $sl)
+                @if(!empty($campaign_id) && in_array($key,$campaign_id))
+                <option value="{{$key}}" selected>{{$sl->campaign_name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->campaign_name}}</option>
+                @endif
+              @endforeach
+            </select>
+        </div>
+    </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>

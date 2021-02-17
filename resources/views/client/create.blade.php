@@ -16,6 +16,8 @@
                         'model' => $model,
                         'slab' => $slab,
                         'status' => $status,
+                        'location'=>$location,
+                        'campaign'=>$campaign
                     ])
                 </div>
             </div>

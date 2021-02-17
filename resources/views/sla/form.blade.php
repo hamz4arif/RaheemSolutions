@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Time</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->time}}" placeholder="Time" name="time" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->time}}" placeholder="(hh:mm:ss)" name="time" required>
     </div>
   </div>
   <div class="form-row">

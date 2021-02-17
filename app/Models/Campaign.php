@@ -12,4 +12,9 @@ class Campaign extends Model
     protected $primaryKey = 'campaign_id';
     protected $table = 'ts_campaign';
 
+    
+    public function client()
+    {
+        return $this->belongsToMany(Client::class,'ts_client_campaign');
+    }
 }

@@ -14,7 +14,7 @@
             <label for="exampleFormControlSelect1">Zone</label>
             <select class="form-control" id="exampleFormControlSelect1" name="zone">
                 @foreach($zone as $key => $zo)
-                <option value="{{$key}}" {{ ( $key == $model->zone_id) ? 'selected' : '' }}>{{$zo}}</option>
+                <option value="{{$key}}" {{ ( $key == $model->zone_id) ? 'selected' : '' }}>{{$zo->name}}</option>
                 @endforeach
             </select>
         </div>

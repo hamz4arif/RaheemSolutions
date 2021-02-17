@@ -34,9 +34,28 @@
   <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.5.0') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <style>
+  .bootstrap-select>.dropdown-toggle.bs-placeholder{
+    color:#2c2c2c !important;
+  }
+  .btn.dropdown-toggle.btn-light,.btn.dropdown-toggle.btn-light:hover,.btn.dropdown-toggle.btn-light:active{
+    background-color: transparent;
+    border: 1px solid #E3E3E3;
+    border-radius: 30px;
+    color: #2c2c2c;
+    line-height: normal;
+    height: auto;
+    font-size: 0.8571em;
+    margin-top:0px;
+  }
+  </style>
 </head>
 
 <body class="">
+<?php 
+$company = App\Models\Company::find(Auth::user()->company_id);
+?>
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
@@ -47,7 +66,11 @@
           CT
         </a> -->
         <a href="/dashboard" class="simple-text logo-normal">
-          {{ App\Models\Company::find(Auth::user()->company_id)->name}}
+        @if(!empty($company))
+          {{ $company->name}}
+        @else
+          {{__("Company Name")}}
+        @endif
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -65,22 +88,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="/location/index">Manage Location</a>
-                    </li>
-                    <li>
                         <a href="/company/index">Manage Compnay</a>
                     </li>
                     <li>
-                        <a href="/client/index">Manage Client</a>
-                    </li>
-                    <li>
                         <a href="/campaign/index">Manage Campaign</a>
-                    </li>
-                    <li>
-                        <a href="/category/index">Manage Category</a>
-                    </li>
-                    <li>
-                        <a href="/type/index">Manage Type</a>
                     </li>
                     <li>
                         <a href="/item/index">Manage Item</a>
@@ -89,10 +100,25 @@
                         <a href="/department/index">Manage Department</a>
                     </li>
                     <li>
-                        <a href="/staff/index">Manage Staff</a>
+                        <a href="/asm/index">Manage Asm</a>
                     </li>
                     <li>
-                        <a href="/asm/index">Manage Asm</a>
+                        <a href="/priority/index">Manage Priority</a>
+                    </li>
+                    <li>
+                        <a href="/location/index">Manage Location</a>
+                    </li>
+                    <li>
+                        <a href="/client/index">Manage Client</a>
+                    </li>
+                    <li>
+                        <a href="/category/index">Manage Category</a>
+                    </li>
+                    <li>
+                        <a href="/type/index">Manage Type</a>
+                    </li>
+                    <li>
+                        <a href="/staff/index">Manage Staff</a>
                     </li>
                     <li>
                         <a href="/user/index">Manage User</a>
@@ -101,13 +127,10 @@
                         <a href="/group/index">Manage Group</a>
                     </li>
                     <li>
-                        <a href="/distribution/index">Manage Distribution</a>
-                    </li>
-                    <li>
-                        <a href="/priority/index">Manage Priority</a>
-                    </li>
-                    <li>
                         <a href="/sla/index">Manage SLA</a>
+                    </li>
+                    <li>
+                        <a href="/distribution/index">Manage Distribution</a>
                     </li>
                 </ul>
           </li>
@@ -234,7 +257,14 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/now-ui-dashboard.min.js?v=1.5.0') }}" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
   @yield('scripts')
 </body>
 
 </html>
+
+<script>
+  $( document ).ready(function() {
+    $('.multi-select').selectpicker();
+  });
+  </script>

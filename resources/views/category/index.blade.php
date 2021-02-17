@@ -47,7 +47,7 @@
                             <td>{{  $cat->alias }}</td>
                             <td>{{  $status[$cat->status] }}</td>
                             <td>{{  $cat->created_at }}</td>
-                            <td>{{  $sla[$cat->sla] }}</td>
+                            <td>{{  $cat->sla }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/category/edit/{{$cat->category_id}}"><button type="button" class="btn btn-info">Update</button></a>

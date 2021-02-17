@@ -25,14 +25,34 @@
     </div>
   </div>
   <div class="form-row">
-
-
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault04">SLA</label>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->sla}}" placeholder="Hour (must be in digit e.g 2,8,10... etc)" name="sla" required>
+    </div>
+    <div class="col-md-4 mb-3">
         <div class="form-group">
-            <label for="exampleFormControlSelect1">SLA</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="sla">
-              @foreach($sla as $key => $sl)
-                <option value="{{$key}}" {{ ( $key == $model->sla) ? 'selected' : '' }}>{{$sl}}</option>
+            <label for="exampleFormControlSelect1">Clients</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="client[]" multiple>
+              @foreach($client as $key => $sl)
+                @if(!empty($client_id) && in_array($key,$client_id))
+                <option value="{{$key}}" selected>{{$sl->name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->name}}</option>
+                @endif
+              @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Type</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="type[]" multiple>
+              @foreach($type as $key => $sl)
+                @if(!empty($type_id) && in_array($key,$type_id))
+                <option value="{{$key}}" selected>{{$sl->name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->name}}</option>
+                @endif
               @endforeach
             </select>
         </div>

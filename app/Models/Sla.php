@@ -9,4 +9,9 @@ class Sla extends Model
 {
     use HasFactory;
     protected $table='ts_sla';
+    
+    public function location()
+    {
+        return $this->belongsToMany(location::class,'ts_sla_locations','sla_id','location_id');
+    }
 }

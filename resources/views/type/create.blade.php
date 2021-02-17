@@ -16,6 +16,7 @@
                         'model' => $model,
                         'status' => $status,
                         'purpose' => $purpose,
+                        'item' => $item,
                     ])
                 </div>
             </div>

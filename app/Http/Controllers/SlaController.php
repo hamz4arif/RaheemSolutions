@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sla;
 use App\Models\Group;
+use App\Models\location;
 
 class SlaController extends Controller
 {
@@ -25,23 +26,32 @@ class SlaController extends Controller
     public function create(){
         $status_array = array("0"=>"Enable","1"=>"Disable");
         $group_array = Group::all()->keyBy('group_id');
+        $location_array = location::all()->keyBy('group_id');
         $model = new Sla;
         return view('sla.create', [
             'model' => $model,
             'status' => $status_array,
-            'group' => $group_array
+            'group' => $group_array,
+            'location' => $location_array
         ]);
     }
 
     public function edit($id){
         $status_array = array("0"=>"Enable","1"=>"Disable");
         $group_array = Group::all()->keyBy('group_id');
-        $model = Sla::where('id', $id)
-            ->firstOrFail();
+        $location_array = location::all()->keyBy('group_id');
+        $model = Sla::find($id);
+        $sla_location = $model->location;
+        $sla_location_id = array();
+        foreach ($sla_location as $value) {
+            $sla_location_id[] = $value->pivot->location_id;
+        }
         return view('sla.change', [
             'model' => $model,
             'status' => $status_array,
-            'group' => $group_array
+            'group' => $group_array,
+            'location' => $location_array,
+            'sla_location_id' => $sla_location_id
         ]);
     }
 
