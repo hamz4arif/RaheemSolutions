@@ -16,6 +16,8 @@
                         'model' => $model,
                         'status' => $status,
                         'group' => $group,
+                        'location' => $location,
+                        'location_id' => $sla_location_id
                     ])
                 </div>
             </div>

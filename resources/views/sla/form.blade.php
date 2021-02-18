@@ -25,12 +25,26 @@
     </div>
   </div>
   <div class="form-row">
-  <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Group</label>
             <select class="form-control" id="exampleFormControlSelect1" name="group">
               @foreach($group as $key => $st)
                 <option value="{{$st->group_id}}" {{ ( $st->group_id == $model->group_id) ? 'selected' : '' }}>{{$st->name}}</option>
+              @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Location</label>
+            <select class="form-control multi-select" id="exampleFormControlSelect1" name="location[]" multiple>
+              @foreach($location as $key => $sl)
+                @if(!empty($location_id) && in_array($key,$location_id))
+                <option value="{{$key}}" selected>{{$sl->name}}</option>
+                @else
+                <option value="{{$key}}">{{$sl->name}}</option>
+                @endif
               @endforeach
             </select>
         </div>

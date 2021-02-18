@@ -16,6 +16,7 @@
                         'model' => $model,
                         'status' => $status,
                         'group' => $group,
+                        'location' => $location
                     ])
                 </div>
             </div>
