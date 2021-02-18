@@ -54,7 +54,7 @@
                         <tr>
                             <td>{{  $location->name }}</td>
                             <td>{{  $location->alias }}</td>
-                            <td>{{  $zone[$location->zone_id] }}</td>
+                            <td>{{  isset($zone[$location->zone_id]) ? $zone[$location->zone_id]->name : '' }}</td>
                             <td>{{  $region[$location->region_id] }}</td>
                             <td>{{  $type[$location->location_type] }}</td>
                             <td>{{  $status[$location->status] }}</td>
