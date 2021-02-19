@@ -9,4 +9,5 @@ class Distribution extends Model
 {
     use HasFactory;
     protected $table='ts_distribution';
+    public $timestamps = false;
 }

@@ -9,12 +9,12 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Create Item</h4>
+                <h4 class="card-title"> Create User</h4>
               </div>
               <div class="card-body">
-                    @include('item.form',[
+                    @include('user.form',[
                         'model' => $model,
-                        'status' => $status,
+                        'company' => $company,
                     ])
                 </div>
             </div>

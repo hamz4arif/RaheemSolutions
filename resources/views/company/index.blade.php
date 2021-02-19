@@ -43,7 +43,7 @@
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/company/edit/{{$company->company_id}}"><button type="button" class="btn btn-info">Update</button></a>
-                              <a href="/company/delete/{{$company->company_id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                              <!-- <a href="/company/delete/{{$company->company_id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
                             </div>
                             </td>
                         </tr>

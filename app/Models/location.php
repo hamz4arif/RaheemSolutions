@@ -10,6 +10,7 @@ class location extends Model
     use HasFactory;
     protected $primaryKey = 'location_id';
     protected $table = 'ts_locations';
+    public $timestamps = false;
 
     public function client()
     {

@@ -11,6 +11,7 @@ class Campaign extends Model
     
     protected $primaryKey = 'campaign_id';
     protected $table = 'ts_campaign';
+    public $timestamps = false;
 
     
     public function client()

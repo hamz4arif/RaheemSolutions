@@ -10,4 +10,5 @@ class Asm extends Model
     use HasFactory;
     protected $primaryKey = 'role_id';
     protected $table = 'ts_roles';
+    public $timestamps = false;
 }

@@ -10,4 +10,5 @@ class Group extends Model
     use HasFactory;
     protected $primaryKey = 'group_id';
     protected $table='ts_group';
+    public $timestamps = false;
 }

@@ -8,46 +8,15 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                    <th>
-                        Name
-                      </th>
-                      <th>
-                        Country
-                      </th>
-                      <th>
-                        City
-                      </th>
-                      <th class="text-right">
-                        Salary
-                      </th>
-                    </thead>
-                    <tbody>
-                    @foreach ($models as $user)
-                        <tr>
-                            <td>{{  $user->id }}</td>
-                            <td>{{  $user->name }}</td>
-                            <td>{{  $user->email }}</td>
-                            <td class="text-right">{{  $user->created_at }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h4 class="card-title"> Users Table</h4>
+                  </div>
+                  <div class="col-sm-6 text-right">
+                    <a href="/user/create"><button type="button" class="btn btn-success">Create</button></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="card card-plain">
-              <div class="card-header">
-                <h4 class="card-title"> Table on Plain Background</h4>
-                <p class="category"> Here is a subtitle for this table</p>
-              </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
@@ -61,8 +30,11 @@
                       <th>
                         City
                       </th>
+                      <th>
+                        Created Date
+                      </th>
                       <th class="text-right">
-                        Salary
+                        Action
                       </th>
                     </thead>
                     <tbody>
@@ -71,7 +43,13 @@
                             <td>{{  $user->id }}</td>
                             <td>{{  $user->name }}</td>
                             <td>{{  $user->email }}</td>
-                            <td class="text-right">{{  $user->created_at }}</td>
+                            <td>{{  $user->created_at }}</td>
+                            <td class="text-right">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                              <a href="/user/edit/{{$user->id}}"><button type="button" class="btn btn-info">Update</button></a>
+                              <!-- <a href="/user/delete/{{$user->id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
+                            </div>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -79,7 +79,7 @@
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/ticket/edit/{{$model->id}}"><button type="button" class="btn btn-info">Update</button></a>
-                              <a href="/ticket/delete/{{$model->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                              <!-- <a href="/ticket/delete/{{$model->id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
                             </div>
                             </td>
                         </tr>

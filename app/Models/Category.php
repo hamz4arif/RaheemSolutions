@@ -10,6 +10,7 @@ class Category extends Model
     use HasFactory;
     protected $primaryKey = 'category_id';
     protected $table = 'ts_category';
+    public $timestamps = false;
 
     public function client()
     {

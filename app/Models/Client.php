@@ -10,6 +10,7 @@ class Client extends Model
     use HasFactory;
     protected $primaryKey = 'clients_id';
     protected $table = 'ts_clients';
+    public $timestamps = false;
 
     public function locations()
     {

@@ -9,6 +9,7 @@ class Sla extends Model
 {
     use HasFactory;
     protected $table='ts_sla';
+    public $timestamps = false;
     
     public function location()
     {

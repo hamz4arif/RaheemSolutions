@@ -10,4 +10,5 @@ class Staff extends Model
     use HasFactory;
     protected $primaryKey = 'staff_id';
     protected $table='ts_staff';
+    public $timestamps = false;
 }

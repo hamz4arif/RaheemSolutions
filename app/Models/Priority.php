@@ -10,4 +10,5 @@ class Priority extends Model
     use HasFactory;
     protected $primaryKey = 'priority_id';
     protected $table='ts_priority';
+    public $timestamps = false;
 }

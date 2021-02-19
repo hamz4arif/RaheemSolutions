@@ -10,4 +10,5 @@ class Company extends Model
     use HasFactory;
     protected $primaryKey = 'company_id';
     protected $table = 'ts_company';
+    public $timestamps = false;
 }
