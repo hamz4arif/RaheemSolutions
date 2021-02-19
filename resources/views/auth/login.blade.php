@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="/" class="navbar-brand">
+                <img src="{{ asset('assets/img/RS.png') }}" alt="RS" style="height:110px;">
             </a>
         </x-slot>
 
