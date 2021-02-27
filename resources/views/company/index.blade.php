@@ -38,7 +38,7 @@
                     @foreach ($models as $company)
                         <tr>
                             <td>{{  $company->name }}</td>
-                            <td>{{  $status[$company->status] }}</td>
+                            <td>{{  isset($status[$company->status]) ? $status[$company->status] : '' }}</td>
                             <td>{{  date("d M, Y" ,strtotime($company->created_at)) }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">

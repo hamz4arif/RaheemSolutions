@@ -45,8 +45,8 @@
                         <tr>
                             <td>{{  $sla->name }}</td>
                             <td>{{  $sla->time }}</td>
-                            <td>{{  $status[$sla->status] }}</td>
-                            <td>{{  $group[$sla->group_id]->name }}</td>
+                            <td>{{  isset($status[$sla->status]) ? $status[$sla->status] : '' }}</td>
+                            <td>{{  isset($group[$sla->group_id]) ? $group[$sla->group_id]->name : '' }}</td>
                             <td>{{  date("d M, Y" ,strtotime($sla->created_at)) }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">

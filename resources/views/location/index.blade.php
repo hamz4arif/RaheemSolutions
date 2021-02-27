@@ -55,9 +55,9 @@
                             <td>{{  $location->name }}</td>
                             <td>{{  $location->alias }}</td>
                             <td>{{  isset($zone[$location->zone_id]) ? $zone[$location->zone_id]->name : '' }}</td>
-                            <td>{{  $region[$location->region_id] }}</td>
-                            <td>{{  $type[$location->location_type] }}</td>
-                            <td>{{  $status[$location->status] }}</td>
+                            <td>{{  isset($region[$location->region_id]) ? $region[$location->region_id] : '' }}</td>
+                            <td>{{  isset($type[$location->location_type]) ? $type[$location->location_type] : '' }}</td>
+                            <td>{{  isset($status[$location->status]) ? $status[$location->status] : '' }}</td>
                             <td>{{  date("d M, Y" ,strtotime($location->created_at)) }}</td>
                             <td>{{  $location->description }}</td>
                             <td class="text-right">

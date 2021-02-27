@@ -11,6 +11,8 @@ use App\Models\Type;
 use App\Models\Category;
 use App\Models\Staff;
 use App\Models\Distribution;
+use App\Models\tsTicketComments;
+use App\Models\User;
 
 class TicketController extends Controller
 {
@@ -46,6 +48,7 @@ class TicketController extends Controller
         $priority_array = Priority::all()->keyBy('priority_id');
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
+        $user_array = User::all()->keyBy('id');
         $staff_array = Staff::all()->keyBy('staff_id');
         $category_array = Category::all()->keyBy('category_id');
         $distribution_array = Distribution::all()->keyBy('id');
@@ -65,11 +68,14 @@ class TicketController extends Controller
             'staff' => $staff_array,
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
+            'user_array' => $user_array
         ]);
     }
 
     public function edit($id){
         $priority_array = Priority::all()->keyBy('priority_id');
+        $user_array = User::all()->keyBy('id');
+        $comments_array = tsTicketComments::where("ticket_id",$id)->get();
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
         $staff_array = Staff::all()->keyBy('staff_id');
@@ -92,6 +98,8 @@ class TicketController extends Controller
             'staff' => $staff_array,
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
+            'comments_array' => $comments_array,
+            'user_array' => $user_array
         ]);
     }
 
@@ -112,7 +120,14 @@ class TicketController extends Controller
         $model->priority_id = $request->post('priority_id');
         $model->image_name = $request->post('image_name');
         $model->created_at = date('Y-m-d H:i:s');
-        $model->save();
+        if($model->save()){
+            $comment = new tsTicketComments;
+            $comment->ticket_id = $model->id;
+            $comment->comment = $request->post('comment');
+            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            $comment->created_at = date('Y-m-d H:i:s');
+            $comment->save();
+        }
         if ($request->hasFile('photo')) {
             $image      = $request->file('photo');
             $fileName   = time() . '.' . $image->getClientOriginalExtension();
@@ -160,7 +175,14 @@ class TicketController extends Controller
             //dd();
             Storage::disk('local')->put('images/1/smalls'.'/'.$folderName, $image, 'public');
         }
-        $model->save();
+        if($model->save()){
+            $comment = new tsTicketComments;
+            $comment->ticket_id = $id;
+            $comment->comment = $request->post('comment');
+            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            $comment->created_at = date('Y-m-d H:i:s');
+            $comment->save();
+        }
         return redirect('/ticket/index');
     
     }

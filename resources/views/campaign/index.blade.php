@@ -41,7 +41,7 @@
                     @foreach ($models as $campaign)
                     <tr>
                             <td>{{  $campaign->campaign_name }}</td>
-                            <td>{{  $status[$campaign->status] }}</td>
+                            <td>{{  isset($status[$campaign->status]) ? $status[$campaign->status] : '' }}</td>
                             <td>{{  $campaign->description }}</td>    
                             <td>{{  date("d M, Y" ,strtotime($campaign->created_at)) }}</td>
                             <td class="text-right">

@@ -7,7 +7,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Staff</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Staff Name" value="{{$model->name}}" name="name"required>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Staff Name" value="{{$model->name}}" name="name">
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
@@ -21,17 +21,17 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Username</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->username}}" placeholder="Username" name="username" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->username}}" placeholder="Username" name="username" >
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Password</label>
-      <input type="password" class="form-control" id="validationDefault04" value="{{$model->password}}" placeholder="Password" name="password" required>
+      <input type="password" class="form-control" id="validationDefault04" value="{{$model->password}}" placeholder="Password" name="password" >
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Country</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->country}}" placeholder="Country" name="country" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->country}}" placeholder="Country" name="country" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
@@ -47,21 +47,21 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Email</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->email}}" placeholder="Email" name="email" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->email}}" placeholder="Email" name="email" >
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Mobile</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->mobile}}" placeholder="Mobile" name="mobile" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->mobile}}" placeholder="Mobile" name="mobile" >
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Phone</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->phone}}" placeholder="Phone" name="phone" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->phone}}" placeholder="Phone" name="phone" >
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Phone Ext</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->phone_ext}}" placeholder="Phone Ext" name="phone_ext" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->phone_ext}}" placeholder="Phone Ext" name="phone_ext" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
@@ -87,7 +87,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Address</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->address}}" placeholder="Address" name="address" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->address}}" placeholder="Address" name="address" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">

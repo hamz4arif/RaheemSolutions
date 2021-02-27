@@ -74,13 +74,13 @@
                     @foreach ($models as $distribution)
                         <tr>
                             <td>{{  $distribution->name }}</td>
-                            <td>{{  $location[$distribution->location_id]->name }}</td>
+                            <td>{{  isset($location[$distribution->location_id]) ? $location[$distribution->location_id]->name : '' }}</td>
                             <td>{{  $distribution->username }}</td>
                             <td>{{  $distribution->city }}</td>
-                            <td>{{  $user[$distribution->area_manager]->name }}</td>
-                            <td>{{  $user[$distribution->staff_id]->name }}</td>
-                            <td>{{  $company[$distribution->company_id]->name }}</td>
-                            <td>{{  $status[$distribution->status] }}</td>
+                            <td>{{  isset($user[$distribution->area_manager]) ? $user[$distribution->area_manager]->name : '' }}</td>
+                            <td>{{  isset($user[$distribution->staff_id]) ? $user[$distribution->staff_id]->name : '' }}</td>
+                            <td>{{  isset($company[$distribution->company_id]) ? $company[$distribution->company_id]->name : '' }}</td>
+                            <td>{{  isset($status[$distribution->status]) ? $status[$distribution->status] : '' }}</td>
                             <td>{{  $slab[$distribution->slab] }}</td>
                             <td>{{  $distribution->number }}</td>
                             <td>{{  $distribution->email }}</td>

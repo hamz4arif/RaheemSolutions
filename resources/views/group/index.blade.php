@@ -48,9 +48,9 @@
                         <tr>
                             <td>{{  $group->name }}</td>
                             <td>{{  $group->email }}</td>
-                            <td>{{  $department[$group->department_id]->name }}</td>
+                            <td>{{  isset($department[$group->department_id]) ? $department[$group->department_id]->name : '' }}</td>
                             <td>{{  $group->alias }}</td>
-                            <td>{{  $status[$group->status] }}</td>
+                            <td>{{  isset($status[$group->status]) ? $status[$group->status] : '' }}</td>
                             <td>{{  $group->description }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">

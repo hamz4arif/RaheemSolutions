@@ -23,6 +23,7 @@
                         'staff' => $staff,
                         'approval' => $approval,
                         'tickettype' => $tickettype,
+                        'user_array' => $user_array
                     ])
                 </div>
             </div>

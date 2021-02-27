@@ -91,17 +91,17 @@
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">Ticket Counter</label>
-      <input type="number" class="form-control" id="validationDefault04" value="{{$model->ticket_counter}}" placeholder="Ticket Counter" name="ticket_counter" required>
+      <input type="number" class="form-control" id="validationDefault04" value="{{$model->ticket_counter}}" placeholder="Ticket Counter" name="ticket_counter" >
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">Subject</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Subject" name="subject" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Subject" name="subject" >
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Description</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
@@ -122,5 +122,48 @@
       <input type="file" class="form-control" id="validationDefault04" value="{{$model->image_name}}" placeholder="Image" name="image_name">
     </div>
   </div>
+  <div class="form-row">
+    <div class="col-md-12">
+      <label for="comments">Comments</label>
+      <br>
+      <textarea name="comment" id="ticket_comment" cols="160" rows="10"></textarea>
+    </div>
+  </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
+@if(!empty($comments_array))
+<div class="col-md-12">
+  <div class="card card-plain">
+    <div class="card-header">
+      <h4 class="card-title"> User Comments</h4>
+      <p class="category"> Comments by users are listed here</p>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              User Name
+            </th>
+            <th>
+              Created at
+            </th>
+            <th  class="text-right">
+              Comment
+            </th>
+          </thead>
+          <tbody>
+            @foreach ($comments_array as $user)
+                <tr>
+                    <td>{{  isset($user_array[$user->user_id]) ? $user_array[$user->user_id]->name : '' }}</td>
+                    <td>{{ date('d M, Y H:i:s', strtotime($user->created_at))}}</td>
+                    <td class="text-right">{{  wordwrap($user->comment, 70, "\n", true) }}</td>
+                </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+@endif

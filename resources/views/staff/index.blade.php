@@ -71,10 +71,10 @@
                             <td>{{  $staff->staff }}</td>
                             <td>{{  $staff->mobile }}</td>
                             <td>{{  $staff->phone }}</td>
-                            <td>{{  $departments[$staff->department]->name }}</td>
-                            <td>{{  $company[$staff->company]->name }}</td>
-                            <td>{{  $roles[$staff->roles]->name }}</td>
-                            <td>{{  $zone[$staff->zones]->name }}</td>
+                            <td>{{  isset($departments[$staff->department]) ? $departments[$staff->department]->name : '' }}</td>
+                            <td>{{  isset($company[$staff->company]) ? $company[$staff->company]->name : '' }}</td>
+                            <td>{{  isset($roles[$staff->roles]) ? $roles[$staff->roles]->name : '' }}</td>
+                            <td>{{  isset($zone[$staff->zones]) ? $zone[$staff->zones]->name : '' }}</td>
                             <td>{{  $staff->address }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">

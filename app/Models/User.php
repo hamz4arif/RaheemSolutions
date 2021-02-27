@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return Str::ucfirst($this->name);
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }

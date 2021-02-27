@@ -44,7 +44,7 @@
                     @foreach ($models as $priority)
                         <tr>
                             <td>{{  $priority->name }}</td>
-                            <td>{{  $status[$priority->status] }}</td>
+                            <td>{{  isset($status[$priority->status]) ? $status[$priority->status] : '' }}</td>
                             <td>{{  $priority->base_sla }}</td>
                             <td>{{  $priority->description }}</td>
                             <td>{{  date("d M, Y" ,strtotime($priority->created_at)) }}</td>

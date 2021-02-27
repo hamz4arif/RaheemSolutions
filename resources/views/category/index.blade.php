@@ -45,7 +45,7 @@
                         <tr>
                             <td>{{  $cat->name }}</td>
                             <td>{{  $cat->alias }}</td>
-                            <td>{{  $status[$cat->status] }}</td>
+                            <td>{{  isset($status[$cat->status]) ? $status[$cat->status] : '' }}</td>
                             <td>{{  $cat->created_at }}</td>
                             <td>{{  $cat->sla }}</td>
                             <td class="text-right">

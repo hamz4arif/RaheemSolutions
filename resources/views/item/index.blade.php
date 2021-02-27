@@ -42,7 +42,7 @@
                         <tr>
                             <td>{{  $item->name }}</td>
                             <td>{{  $item->alias }}</td>
-                            <td>{{  $status[$item->status] }}</td>
+                            <td>{{  isset($status[$item->status]) ? $status[$item->status] : '' }}</td>
                             <td>{{  $item->description }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">

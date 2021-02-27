@@ -42,8 +42,8 @@
                         <tr>
                             <td>{{  $client->name }}</td>
                             <td>{{  $client->alias }}</td>
-                            <td>{{  $status[$client->status] }}</td>
-                            <td>{{  $slab[$client->slabs] }}</td>
+                            <td>{{  isset($status[$client->status]) ? $status[$client->status] : '' }}</td>
+                            <td>{{  isset($slab[$client->slabs]) ? $slab[$client->slabs] : '' }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/client/edit/{{$client->clients_id}}"><button type="button" class="btn btn-info">Update</button></a>

@@ -21,12 +21,6 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                    <th>
-                        Distribution
-                      </th>
-                      <th>
-                        Category
-                      </th>
                       <th>
                         Type
                       </th>
@@ -34,16 +28,10 @@
                         Source
                       </th>
                       <th>
-                        Department
-                      </th>
-                      <th>
                         Staff Name
                       </th>
                       <th>
-                        Approval
-                      </th>
-                      <th>
-                        Ticket Type
+                        Created at
                       </th>
                       <th>
                         Ticket Counter
@@ -64,18 +52,14 @@
                     <tbody>
                     @foreach ($models as $model)
                         <tr>
-                            <td>{{  $distribution[$model->destribution_id]->name }}</td>
-                            <td>{{  $category[$model->category_id]->name }}</td>
-                            <td>{{  $type[$model->type_id]->name }}</td>
-                            <td>{{  $source[$model->source] }}</td>
-                            <td>{{  $department[$model->department_id]->name }}</td>
-                            <td>{{  $staff[$model->staff_id]->name }}</td>
-                            <td>{{  $approval[$model->approval] }}</td>
-                            <td>{{  $tickettype[$model->ticket_type] }}</td>
-                            <td>{{  $model->ticket_counter }}</td>
-                            <td>{{  $model->subject }}</td>
-                            <td>{{  $model->description }}</td>
-                            <td>{{  $priority[$model->priority_id]->name }}</td>
+                            <td>{{  isset($type[$model->type_id]) ? $type[$model->type_id]->name : '' }}</td>
+                            <td>{{  isset($source[$model->source]) ? $source[$model->source] : '' }}</td>
+                            <td>{{  isset($staff[$model->staff_id]) ? $staff[$model->staff_id]->name : '' }}</td>
+                            <td>{{  date('d M, Y H:i:s', strtotime($model->created_at))}}</td>
+                            <td>{{  isset($model->ticket_counter) ? $model->ticket_counter : '' }}</td>
+                            <td>{{  isset($model->subject) ? $model->subject : '' }}</td>
+                            <td>{{  isset($model->description) ? $model->description : '' }}</td>
+                            <td>{{  isset($priority[$model->priority_id]) ? $priority[$model->priority_id]->name : '' }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/ticket/edit/{{$model->id}}"><button type="button" class="btn btn-info">Update</button></a>

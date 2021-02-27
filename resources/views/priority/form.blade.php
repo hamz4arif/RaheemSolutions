@@ -7,7 +7,7 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Priority</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Priority Name" value="{{$model->name}}" name="name"required>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Priority Name" value="{{$model->name}}" name="name">
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
@@ -21,13 +21,13 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Base SLA</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->base_sla}}" placeholder="(hh:mm:ss)" name="base_sla" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->base_sla}}" placeholder="(hh:mm:ss)" name="base_sla" >
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Description</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" required>
+      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>

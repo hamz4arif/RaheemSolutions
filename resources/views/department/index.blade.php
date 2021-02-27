@@ -48,9 +48,9 @@
                         <tr>
                             <td>{{  $department->name }}</td>
                             <td>{{  $department->alias }}</td>
-                            <td>{{  $type[$department->type] }}</td>
-                            <td>{{  $tab[$department->view_tab] }}</td>
-                            <td>{{  $status[$department->status] }}</td>
+                            <td>{{  isset($type[$department->type]) ? $type[$department->type] : '' }}</td>
+                            <td>{{  isset($tab[$department->view_tab]) ? $tab[$department->view_tab] : '' }}</td>
+                            <td>{{  isset($status[$department->status]) ? $status[$department->status] : '' }}</td>
                             <td>{{  $department->description }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
