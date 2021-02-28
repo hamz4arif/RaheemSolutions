@@ -9,4 +9,5 @@ class Ticket extends Model
 {
     use HasFactory;
     protected $table='ts_tickets';
+    public $timestamps = false;
 }

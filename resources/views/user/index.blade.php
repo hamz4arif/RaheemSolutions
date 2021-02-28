@@ -28,7 +28,7 @@
                         Country
                       </th>
                       <th>
-                        City
+                        Email
                       </th>
                       <th>
                         Created Date

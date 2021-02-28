@@ -120,9 +120,11 @@ $company = App\Models\Company::find(Auth::user()->company_id);
                     <li>
                         <a href="/staff/index">Manage Staff</a>
                     </li>
+                    <?php if(Auth::user()->email == "ashher.azad@gmail.com" || Auth::user()->email == "asher@servex247.com"  || Auth::user()->email == "bilalamjad2772@outlook.com" ){ ?>
                     <li>
                         <a href="/user/index">Manage User</a>
                     </li>
+                    <?php } ?>
                     <li>
                         <a href="/group/index">Manage Group</a>
                     </li>

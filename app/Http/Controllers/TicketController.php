@@ -19,6 +19,7 @@ class TicketController extends Controller
     public function index()
     {
         $priority_array = Priority::all()->keyBy('priority_id');
+        $user_array = User::all()->keyBy('id');
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
         $staff_array = Staff::all()->keyBy('staff_id');
@@ -41,6 +42,7 @@ class TicketController extends Controller
             'staff' => $staff_array,
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
+            'user_array' => $user_array
         ]);
     }
 
@@ -120,7 +122,8 @@ class TicketController extends Controller
         $model->priority_id = $request->post('priority_id');
         $model->image_name = $request->post('image_name');
         $model->created_at = date('Y-m-d H:i:s');
-        if($model->save()){
+        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+        if($model->save() && $request->post('comment') != ""){
             $comment = new tsTicketComments;
             $comment->ticket_id = $model->id;
             $comment->comment = $request->post('comment');
@@ -161,6 +164,7 @@ class TicketController extends Controller
         $model->subject = $request->post('subject');
         $model->description = $request->post('description');
         $model->priority_id = $request->post('priority_id');
+        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
         if ($request->hasFile('image_name')) {
             $image      = $request->file('image_name');
             $model->image_name = $image->hashName();
@@ -175,7 +179,7 @@ class TicketController extends Controller
             //dd();
             Storage::disk('local')->put('images/1/smalls'.'/'.$folderName, $image, 'public');
         }
-        if($model->save()){
+        if($model->save() && $request->post('comment') != ""){
             $comment = new tsTicketComments;
             $comment->ticket_id = $id;
             $comment->comment = $request->post('comment');
