@@ -101,4 +101,5 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
+  <a href="/staff/index" class="btn btn-primary">Back</a>
 </form>

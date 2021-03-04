@@ -57,4 +57,5 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
+  <a href="/type/index" class="btn btn-primary">Back</a>
 </form>

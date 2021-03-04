@@ -51,6 +51,7 @@
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/priority/edit/{{$priority->priority_id}}"><button type="button" class="btn btn-info">Update</button></a>
+                              <a href="/priority/delete/{{$priority->priority_id}}" class="btn btn-danger">Delete</a>
                               <!-- <a href="/priority/delete/{{$priority->priority_id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
                             </div>
                             </td>

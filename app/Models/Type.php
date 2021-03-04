@@ -10,6 +10,7 @@ class Type extends Model
     use HasFactory;
     protected $primaryKey = 'type_id';
     protected $table='ts_type';
+    public $timestamps = false;
 
     public function category()
     {

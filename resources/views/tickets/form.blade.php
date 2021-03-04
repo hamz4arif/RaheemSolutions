@@ -130,6 +130,7 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
+  <a href="/ticket/index" class="btn btn-primary">Back</a>
 </form>
 @if(!empty($comments_array))
 <div class="col-md-12">
