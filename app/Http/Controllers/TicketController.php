@@ -16,6 +16,7 @@ use App\Models\User;
 
 class TicketController extends Controller
 {
+
     public function index()
     {
         $priority_array = Priority::all()->keyBy('priority_id');
@@ -25,9 +26,9 @@ class TicketController extends Controller
         $staff_array = Staff::all()->keyBy('staff_id');
         $category_array = Category::all()->keyBy('category_id');
         $distribution_array = Distribution::all()->keyBy('id');
-        $source_array = array("0"=>"web","1"=>"app");
-        $approval_array = array("0"=>"No","1"=>"Yes");
-        $tickettype_array = array("0"=>"online","1"=>"on Site");
+        $source_array = array("0" => "web", "1" => "app");
+        $approval_array = array("0" => "No", "1" => "Yes");
+        $tickettype_array = array("0" => "online", "1" => "on Site");
         $models = Ticket::all();
 
 
@@ -46,7 +47,9 @@ class TicketController extends Controller
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
+        $currentuser = auth()->user()->id;
         $priority_array = Priority::all()->keyBy('priority_id');
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
@@ -54,12 +57,13 @@ class TicketController extends Controller
         $staff_array = Staff::all()->keyBy('staff_id');
         $category_array = Category::all()->keyBy('category_id');
         $distribution_array = Distribution::all()->keyBy('id');
-        $source_array = array("0"=>"web","1"=>"app");
-        $approval_array = array("0"=>"No","1"=>"Yes");
-        $tickettype_array = array("0"=>"online","1"=>"on Site");
+        $source_array = array("0" => "web", "1" => "app");
+        $approval_array = array("0" => "No", "1" => "Yes");
+        $tickettype_array = array("0" => "online", "1" => "on Site");
         $model = new Ticket;
 
         return view('tickets.create', [
+            'currentuser' => $currentuser,
             'model' => $model,
             'priority' => $priority_array,
             'department' => $department_array,
@@ -74,22 +78,26 @@ class TicketController extends Controller
         ]);
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
+        $currentuser = auth()->user()->id;
+
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
-        $comments_array = tsTicketComments::where("ticket_id",$id)->get();
+        $comments_array = tsTicketComments::where("ticket_id", $id)->get();
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
         $staff_array = Staff::all()->keyBy('staff_id');
         $category_array = Category::all()->keyBy('category_id');
         $distribution_array = Distribution::all()->keyBy('id');
-        $source_array = array("0"=>"web","1"=>"app");
-        $approval_array = array("0"=>"No","1"=>"Yes");
-        $tickettype_array = array("0"=>"online","1"=>"on Site");
+        $source_array = array("0" => "web", "1" => "app");
+        $approval_array = array("0" => "No", "1" => "Yes");
+        $tickettype_array = array("0" => "online", "1" => "on Site");
         $model = Ticket::where('id', $id)
             ->firstOrFail();
-        
+
         return view('tickets.change', [
+            'currentuser' => $currentuser,
             'model' => $model,
             'priority' => $priority_array,
             'department' => $department_array,
@@ -105,7 +113,8 @@ class TicketController extends Controller
         ]);
     }
 
-    public function save(Request $request){
+    public function save(Request $request)
+    {
 
         $model = new Ticket();
         $model->staff_id = $request->post('staff_id');
@@ -122,12 +131,12 @@ class TicketController extends Controller
         $model->priority_id = $request->post('priority_id');
         $model->image_name = $request->post('image_name');
         $model->created_at = date('Y-m-d H:i:s');
-        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
-        if($model->save() && $request->post('comment') != ""){
+        $model->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
+        if ($model->save() && $request->post('comment') != "") {
             $comment = new tsTicketComments;
             $comment->ticket_id = $model->id;
             $comment->comment = $request->post('comment');
-            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
             $comment->created_at = date('Y-m-d H:i:s');
             $comment->save();
         }
@@ -143,15 +152,15 @@ class TicketController extends Controller
             // $img->stream(); // <-- Key point
 
             //dd();
-            Storage::disk('local')->put('images/1/smalls'.'/'.$fileName, $image, 'public');
+            Storage::disk('local')->put('images/1/smalls' . '/' . $fileName, $image, 'public');
         }
         return redirect('/ticket/index');
-    
     }
 
-    public function modify($id,Request $request){
+    public function modify($id, Request $request)
+    {
         $model = Ticket::where('id', $id)
-        ->firstOrFail();
+            ->firstOrFail();
         $model->staff_id = $request->post('staff_id');
         $model->category_id = $request->post('category_id');
         $model->type_id = $request->post('type_id');
@@ -164,7 +173,7 @@ class TicketController extends Controller
         $model->subject = $request->post('subject');
         $model->description = $request->post('description');
         $model->priority_id = $request->post('priority_id');
-        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+        $model->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
         if ($request->hasFile('image_name')) {
             $image      = $request->file('image_name');
             $model->image_name = $image->hashName();
@@ -177,21 +186,21 @@ class TicketController extends Controller
             // $img->stream(); // <-- Key point
 
             //dd();
-            Storage::disk('local')->put('images/1/smalls'.'/'.$folderName, $image, 'public');
+            Storage::disk('local')->put('images/1/smalls' . '/' . $folderName, $image, 'public');
         }
-        if($model->save() && $request->post('comment') != ""){
+        if ($model->save() && $request->post('comment') != "") {
             $comment = new tsTicketComments;
             $comment->ticket_id = $id;
             $comment->comment = $request->post('comment');
-            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
             $comment->created_at = date('Y-m-d H:i:s');
             $comment->save();
         }
         return redirect('/ticket/index');
-    
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $model = Ticket::find($id);
         $model->delete();
         return redirect('/ticket/index');
