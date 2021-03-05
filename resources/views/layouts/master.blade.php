@@ -32,6 +32,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
+  <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -275,9 +276,16 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/now-ui-dashboard.min.js?v=1.5.0') }}" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
+  <script src="{{ asset('js/select2.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
   @yield('scripts')
 </body>
+<script>
+      $(".ticketinput").select2({
+        placeholder: "Select",
+        allowClear: true,
+      });
+    </script>
 
 </html>
 

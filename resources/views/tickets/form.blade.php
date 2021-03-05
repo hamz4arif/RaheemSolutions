@@ -12,17 +12,20 @@
       <div class="col-md-4 mb-3 ">
         <div class="form-group ">
           <label for="exampleFormControlSelect1">Assign to(staff)</label>
-          <select class="form-control tickettextbox " id="exampleFormControlSelect1" name="staff_id">
+          <select multiple class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="staff_id[]">
             @foreach($staff as $key => $st)
             <option value="{{$st->staff_id}}" {{ ( $st->staff_id == $model->staff_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
+
           </select>
+
+
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Category</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="category_id">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="category_id">
             @foreach($category as $key => $st)
             <option value="{{$st->category_id}}" {{ ( $st->category_id == $model->category_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -32,7 +35,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Type</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="type_id">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="type_id">
             @foreach($type as $key => $st)
             <option value="{{$st->type_id}}" {{ ( $st->type_id == $model->type_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -42,7 +45,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Distribution</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="destribution_id">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="destribution_id">
             @foreach($distribution as $key => $st)
             <option value="{{$st->id}}" {{ ( $st->id == $model->destribution_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -55,7 +58,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Source</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="source">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="source">
             @foreach($source as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->source) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -65,7 +68,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Department</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="department_id">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="department_id">
             @foreach($department as $key => $st)
             <option value="{{$st->dprt_id}}" {{ ( $st->dprt_id == $model->department_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -75,7 +78,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Approval</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="approval">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="approval">
             @foreach($approval as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->approval) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -88,7 +91,7 @@
       <div class="col-md-3 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Ticket Type</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="ticket_type">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="ticket_type">
             @foreach($tickettype as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->ticket_type) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -102,8 +105,9 @@
       <div class="col-md-3 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Priority</label>
-          <select class="form-control tickettextbox" id="exampleFormControlSelect1" name="priority_id">
+          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="priority_id">
             @foreach($priority as $key => $st)
+            <option value=""></option>
             <option value="{{$st->priority_id}}" {{ ( $st->priority_id == $model->priority_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
           </select>
@@ -127,14 +131,14 @@
       <div class="col-md-12">
         <label for="validationDefault04">Description</label>
         <br>
-        <textarea {{$model->user_id!=$currentuser?"disabled":""}} id="validationDefault04" cols="130" rows="5" value="{{$model->description}}" name="description"></textarea>
+        <textarea {{$model->user_id && $model->user_id!=$currentuser?"disabled":""}} id="validationDefault04" cols="130" rows="5" value="{{$model->description}}" name="description"></textarea>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-12">
         <label for="comments">Comments</label>
         <br>
-        <textarea name="comment" {{$model->user_id!=$currentuser?"disabled":""}} id="ticket_comment" cols="130" rows="5"></textarea>
+        <textarea name="comment" {{$model->user_id && $model->user_id!=$currentuser?"disabled":""}} id="ticket_comment" cols="130" rows="5"></textarea>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>

@@ -115,44 +115,51 @@ class TicketController extends Controller
 
     public function save(Request $request)
     {
+        $staff_ids = $_POST['staff_id'];
+        foreach ($staff_ids as $staff_id) {
+            # code...
 
-        $model = new Ticket();
-        $model->staff_id = $request->post('staff_id');
-        $model->category_id = $request->post('category_id');
-        $model->type_id = $request->post('type_id');
-        $model->destribution_id = $request->post('destribution_id');
-        $model->source = $request->post('source');
-        $model->department_id = $request->post('department_id');
-        $model->approval = $request->post('approval');
-        $model->ticket_type = $request->post('ticket_type');
-        $model->ticket_counter = $request->post('ticket_counter');
-        $model->subject = $request->post('subject');
-        $model->description = $request->post('description');
-        $model->priority_id = $request->post('priority_id');
-        $model->image_name = $request->post('image_name');
-        $model->created_at = date('Y-m-d H:i:s');
-        $model->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
-        if ($model->save() && $request->post('comment') != "") {
-            $comment = new tsTicketComments;
-            $comment->ticket_id = $model->id;
-            $comment->comment = $request->post('comment');
-            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
-            $comment->created_at = date('Y-m-d H:i:s');
-            $comment->save();
-        }
-        if ($request->hasFile('photo')) {
-            $image      = $request->file('photo');
-            $fileName   = time() . '.' . $image->getClientOriginalExtension();
 
-            // $img = Image::make($image->getRealPath());
-            // $img->resize(120, 120, function ($constraint) {
-            //     $constraint->aspectRatio();                 
-            // });
 
-            // $img->stream(); // <-- Key point
 
-            //dd();
-            Storage::disk('local')->put('images/1/smalls' . '/' . $fileName, $image, 'public');
+            $model = new Ticket();
+            $model->staff_id = $staff_id;
+            $model->category_id = $request->post('category_id');
+            $model->type_id = $request->post('type_id');
+            $model->destribution_id = $request->post('destribution_id');
+            $model->source = $request->post('source');
+            $model->department_id = $request->post('department_id');
+            $model->approval = $request->post('approval');
+            $model->ticket_type = $request->post('ticket_type');
+            $model->ticket_counter = $request->post('ticket_counter');
+            $model->subject = $request->post('subject');
+            $model->description = $request->post('description');
+            $model->priority_id = $request->post('priority_id');
+            $model->image_name = $request->post('image_name');
+            $model->created_at = date('Y-m-d H:i:s');
+            $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            if ($model->save() && $request->post('comment') != "") {
+                $comment = new tsTicketComments;
+                $comment->ticket_id = $model->id;
+                $comment->comment = $request->post('comment');
+                $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+                $comment->created_at = date('Y-m-d H:i:s');
+                $comment->save();
+            }
+            if ($request->hasFile('photo')) {
+                $image      = $request->file('photo');
+                $fileName   = time() . '.' . $image->getClientOriginalExtension();
+
+                // $img = Image::make($image->getRealPath());
+                // $img->resize(120, 120, function ($constraint) {
+                //     $constraint->aspectRatio();                 
+                // });
+
+                // $img->stream(); // <-- Key point
+
+                //dd();
+                Storage::disk('local')->put('images/1/smalls' . '/' . $fileName, $image, 'public');
+            }
         }
         return redirect('/ticket/index');
     }
@@ -173,7 +180,7 @@ class TicketController extends Controller
         $model->subject = $request->post('subject');
         $model->description = $request->post('description');
         $model->priority_id = $request->post('priority_id');
-        $model->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
+        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
         if ($request->hasFile('image_name')) {
             $image      = $request->file('image_name');
             $model->image_name = $image->hashName();
@@ -192,7 +199,7 @@ class TicketController extends Controller
             $comment = new tsTicketComments;
             $comment->ticket_id = $id;
             $comment->comment = $request->post('comment');
-            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->Id;
+            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
             $comment->created_at = date('Y-m-d H:i:s');
             $comment->save();
         }
