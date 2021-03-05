@@ -500,8 +500,9 @@ textarea {
   color: inherit;
 }
 .tickettextbox{
+  height:30px !important;
   border-color: #AAAAAA !important;
-  border-radius: 0px !important;
+  border-radius: 5px !important;
 
 }
 

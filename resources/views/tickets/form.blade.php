@@ -119,7 +119,7 @@
         @else
         <label for="validationDefault04">file</label>
         @endif
-        <input type="file" class="form-control" id="validationDefault04" value="{{$model->image_name}}" placeholder="Image" name="image_name">
+        <input type="file" class="form-control tickettextbox" id="validationDefault04" value="{{$model->image_name}}" placeholder="Image" name="image_name">
       </div>
 
     </div>
