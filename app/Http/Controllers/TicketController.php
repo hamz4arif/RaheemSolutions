@@ -49,7 +49,7 @@ class TicketController extends Controller
 
     public function create()
     {
-        $currentuser = auth()->user()->id;
+        $currentuser_id = auth()->user()->id;
         $priority_array = Priority::all()->keyBy('priority_id');
         $department_array = Department::all()->keyBy('dprt_id');
         $type_array = Type::all()->keyBy('type_id');
@@ -63,7 +63,7 @@ class TicketController extends Controller
         $model = new Ticket;
 
         return view('tickets.create', [
-            'currentuser' => $currentuser,
+            'currentuser_id' => $currentuser_id,
             'model' => $model,
             'priority' => $priority_array,
             'department' => $department_array,
@@ -80,7 +80,7 @@ class TicketController extends Controller
 
     public function edit($id)
     {
-        $currentuser = auth()->user()->id;
+        $currentuser_id = auth()->user()->id;
 
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
@@ -97,7 +97,7 @@ class TicketController extends Controller
             ->firstOrFail();
 
         return view('tickets.change', [
-            'currentuser' => $currentuser,
+            'currentuser_id' => $currentuser_id,
             'model' => $model,
             'priority' => $priority_array,
             'department' => $department_array,

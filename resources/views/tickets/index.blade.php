@@ -5,7 +5,7 @@
 @section('username', \Illuminate\Support\Facades\Auth::user()->getName())
 
 @section('content')
-        <div class="row hello">
+        <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -56,7 +56,7 @@
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
                               <a href="/ticket/edit/{{$model->id}}"><button type="button" class="btn btn-info">Update</button></a>&nbsp;
-                              <a href="/ticket/delete/{{$model->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                              <!-- <a href="/ticket/delete/{{$model->id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
                             </div>
                             </td>
                         </tr>

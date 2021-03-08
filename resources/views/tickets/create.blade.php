@@ -13,11 +13,17 @@
         <div class="card">
             <div class="card-header">
 
-                <a class="btn btn-primary " href="/ticket/index"> <i class="fas fa-arrow-left fa-1x"></i>View All Tickets</a>
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                    <div><a class="btn btn-primary " href="/ticket/index"> <i class="fas fa-arrow-left fa-1x"></i></a></div>
+                    <div>
+                        <h4 class="card-title h4"> Create Ticket</h4>
+                    </div>
+                    <div></div>
+                </div>
             </div>
             <div class="card-body">
                 @include('tickets.form',[
-                'currentuser'=>$currentuser,
+                'currentuser_id'=>$currentuser_id,
                 'model' => $model,
                 'priority' => $priority,
                 'department' => $department,

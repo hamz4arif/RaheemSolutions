@@ -499,12 +499,6 @@ textarea {
   line-height: inherit;
   color: inherit;
 }
-.tickettextbox{
-  height:30px !important;
-  border-color: #AAAAAA !important;
-  border-radius: 5px !important;
-
-}
 
 /**
  * Use the configured 'mono' font family for elements that
@@ -184449,5 +184443,15 @@ select {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
   }
+}
+
+
+
+/* Custom CSS */
+.tickettextbox{
+  height:30px ;
+  border-color: #AAAAAA;
+  border-radius: 5px;
+
 }
 

@@ -66,8 +66,7 @@ class DistributionController extends Controller
         $type_array = Type::all()->keyBy('type_id');
         $category_array = Category::all()->keyBy('category_id');
         $status_array = array("0"=>"Enable","1"=>"Disable");
-        $model = Distribution::where('location_id', $id);
-        // ->firstOrFail();
+        $model = Distribution::where('location_id', $id)->firstOrFail();
         
         return view('distribution.change',
          [

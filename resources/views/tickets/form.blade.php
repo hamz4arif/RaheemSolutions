@@ -7,7 +7,7 @@
     <div class="form-row ">
       <div class="col-md-8 mb-3 ">
         <label for="validationDefault04">Title</label>
-        <input type="text" {{$model->user_id && $model->user_id!=$currentuser?"disabled":""}} class=" tickettextbox form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Title" name="subject">
+        <input type="text" {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} class=" tickettextbox form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Title" name="subject">
       </div>
       <div class="col-md-4 mb-3 ">
         <div class="form-group ">
@@ -131,14 +131,14 @@
       <div class="col-md-12">
         <label for="validationDefault04">Description</label>
         <br>
-        <textarea {{$model->user_id && $model->user_id!=$currentuser?"disabled":""}} id="validationDefault04" cols="130" rows="5" value="{{$model->description}}" name="description"></textarea>
+        <textarea {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} id="validationDefault04" cols="130" rows="5" value="{{$model->description}}" name="description"></textarea>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-12">
         <label for="comments">Comments</label>
         <br>
-        <textarea name="comment" {{$model->user_id && $model->user_id!=$currentuser?"disabled":""}} id="ticket_comment" cols="130" rows="5"></textarea>
+        <textarea name="comment" {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} id="ticket_comment" cols="130" rows="5"></textarea>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>

@@ -5,14 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- <title>{{ config('app.name', 'Raheem solution') }}</title> -->
-        <title>Raheem Solution</title>
+        <title>{{ config('app.name', 'Raheem Solution') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <!-- <link href="css/ticketstyle.css" rel="stylesheet" /> -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
