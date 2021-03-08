@@ -115,15 +115,15 @@ class TicketController extends Controller
 
     public function save(Request $request)
     {
+        // echo $request->input('ticket_id');
+        // exit;
         $staff_ids = $_POST['staff_id'];
         foreach ($staff_ids as $staff_id) {
             # code...
 
-
-
-
             $model = new Ticket();
             $model->staff_id = $staff_id;
+            
             $model->category_id = $request->post('category_id');
             $model->type_id = $request->post('type_id');
             $model->destribution_id = $request->post('destribution_id');

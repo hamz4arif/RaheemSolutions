@@ -184449,9 +184449,26 @@ select {
 
 /* Custom CSS */
 .tickettextbox{
-  height:30px ;
+  height:28px ;
   border-color: #AAAAAA;
   border-radius: 5px;
+  padding:5px;
+  font-size:1rem;
 
+}
+.tickettextbox::placeholder{
+  font-size:1rem;
+}
+
+.main-panel>.content{
+  margin-top:-75px;
+}
+
+option::placeholder{
+  color:red;
+  font-size:1rem;
+}
+select{
+  color:red;
 }
 
