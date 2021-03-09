@@ -7,12 +7,12 @@
     <div class="form-row ">
       <div class="col-md-8 mb-3 ">
         <label for="validationDefault04">Title</label>
-        <input type="text" {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} class=" tickettextbox form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Title" name="subject">
+        <input type="text" {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} class=" inputbox form-control" id="validationDefault04" value="{{$model->subject}}" placeholder="Title" name="subject">
       </div>
       <div class="col-md-4 mb-3 ">
         <div class="form-group ">
           <label for="exampleFormControlSelect1">Assign to(staff)</label>
-          <select multiple required class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="staff_id[]">
+          <select multiple required class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="staff_id[]">
             @foreach($staff as $key => $st)
             <option value="{{$st->staff_id}}" {{ ( $st->staff_id == $model->staff_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -22,7 +22,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Category</label>
-          <select class="form-control ticketselectbox ticketinput" id="exampleFormControlSelect1" name="category_id">
+          <select class="form-control selectbox ticketselectbox ticketinput" id="exampleFormControlSelect1" name="category_id">
             @foreach($category as $key => $st)
             <option value="{{$st->category_id}}" {{ ( $st->category_id == $model->category_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -32,7 +32,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Type</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="type_id">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="type_id">
             @foreach($type as $key => $st)
             <option value="{{$st->type_id}}" {{ ( $st->type_id == $model->type_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -42,7 +42,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Distribution</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="destribution_id">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="destribution_id">
             @foreach($distribution as $key => $st)
             <option value="{{$st->id}}" {{ ( $st->id == $model->destribution_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -55,7 +55,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Source</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="source">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="source">
             @foreach($source as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->source) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -65,7 +65,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Department</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="department_id">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="department_id">
             @foreach($department as $key => $st)
             <option value="{{$st->dprt_id}}" {{ ( $st->dprt_id == $model->department_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -75,7 +75,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Approval</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="approval">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="approval">
             @foreach($approval as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->approval) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -88,7 +88,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Ticket Type</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="ticket_type">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="ticket_type">
             @foreach($tickettype as $key => $st)
             <option value="{{$key}}" {{ ( $key == $model->ticket_type) ? 'selected' : '' }}>{{$st}}</option>
             @endforeach
@@ -97,12 +97,12 @@
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationDefault04">Ticket Counter</label>
-        <input type="number" class="form-control tickettextbox" id="validationDefault04" value="{{$model->ticket_counter}}" placeholder="Ticket Counter" name="ticket_counter">
+        <input type="number" class="form-control inputbox" id="validationDefault04" value="{{$model->ticket_counter}}" placeholder="Ticket Counter" name="ticket_counter">
       </div>
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Priority</label>
-          <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="priority_id">
+          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="priority_id">
             @foreach($priority as $key => $st)
 
             <option value="{{$st->priority_id}}" {{ ( $st->priority_id == $model->priority_id) ? 'selected' : '' }}>{{$st->name}}</option>
@@ -118,7 +118,7 @@
       <div class="col-md-8 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Ticket Status</label>
-          <select required class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="status">
+          <select required class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="status">
             <option value="Not Started" {{$model->status=="Not Started"?"selected":""}}>Not Started</option>
             <option value="In Progress" {{$model->status=="In Progress"?"selected":""}}>In Progress</option>
             <option value="Resolved" {{$model->status=="Resolved"?"selected":""}}>Resolved</option>
@@ -137,7 +137,7 @@
         @else
         <label for="validationDefault04">file</label>
         @endif
-        <input type="file" class="form-control " id="validationDefault04" value="{{$model->image_name}}" placeholder="Image" name="image_name">
+        <input type="file" class="form-control fileinputbox " id="validationDefault04" value="{{$model->image_name}}" placeholder="Image" name="image_name">
       </div>
 
     </div>

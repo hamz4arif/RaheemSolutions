@@ -7,12 +7,12 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Department Name</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Department Name" value="{{$model->name}}" name="name">
+      <input type="text" class="form-control inputbox" id="validationDefault01" placeholder="Department Name" value="{{$model->name}}" name="name">
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Status</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="status">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="status">
               @foreach($status as $key => $st)
                 <option value="{{$key}}" {{ ( $key == $model->status) ? 'selected' : '' }}>{{$st}}</option>
               @endforeach
@@ -21,18 +21,18 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Alias</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Description</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">View Tab</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="tab">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="tab">
               @foreach($tab as $key => $st)
                 <option value="{{$key}}" {{ ( $key == $model->view_tab) ? 'selected' : '' }}>{{$st}}</option>
               @endforeach
@@ -42,7 +42,7 @@
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Type</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="type">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="type">
               @foreach($type as $key => $st)
                 <option value="{{$key}}" {{ ( $key == $model->type) ? 'selected' : '' }}>{{$st}}</option>
               @endforeach

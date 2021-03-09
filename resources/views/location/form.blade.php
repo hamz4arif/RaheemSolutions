@@ -7,12 +7,12 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Location</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Location Name" value="{{$model->name}}" name="name">
+      <input type="text" class="form-control inputbox" id="validationDefault01" placeholder="Location Name" value="{{$model->name}}" name="name">
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Zone</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="zone">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="zone">
                 @foreach($zone as $key => $zo)
                 <option value="{{$key}}" {{ ( $key == $model->zone_id) ? 'selected' : '' }}>{{$zo->name}}</option>
                 @endforeach
@@ -22,7 +22,7 @@
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Location Type</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="location_type">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="location_type">
               @foreach($type as $key => $ty)
                 <option value="{{$key}}" {{ ( $key == $model->location_type) ? 'selected' : '' }}>{{$ty}}</option>
               @endforeach
@@ -31,33 +31,36 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Status</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="status">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="status">
               @foreach($status as $key => $st)
                 <option value="{{$key}}" {{ ( $key == $model->status) ? 'selected' : '' }}>{{$st}}</option>
               @endforeach
             </select>
         </div>
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationDefault04">Alias</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
     </div>
-    <div class="col-md-3 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Region</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="region">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="region">
               @foreach($region as $key => $re)
                 <option value="{{$key}}" {{ ( $key == $model->region_id) ? 'selected' : '' }}>{{$re}}</option>
               @endforeach
             </select>
         </div>
     </div>
-    <div class="col-md-3 mb-3">  
+    
+  </div>
+  <div class="form-row">
+  <div class="col-md-12 mb-3">  
       <label for="validationDefault05">Description</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->description}}" placeholder="Description" name="description" >
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>

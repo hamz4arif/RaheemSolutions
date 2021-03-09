@@ -33,7 +33,6 @@ Route::get('/item/index', 'ItemController@index')->middleware(['auth'])->name('i
 Route::get('/department/index', 'DepartmentController@index')->middleware(['auth'])->name('department');
 Route::get('/staff/index', 'StaffController@index')->middleware(['auth'])->name('staff');
 Route::get('/asm/index', 'AsmController@index')->middleware(['auth'])->name('asm');
-Route::get('/status/index','statusController@index')->middleware(['auth'])->name('status');
 Route::get('/user/index', 'UserController@index')->middleware(['auth'])->name('user');
 Route::get('/group/index', 'GroupController@index')->middleware(['auth'])->name('group');
 Route::get('/distribution/index', 'DistributionController@index')->middleware(['auth'])->name('distribution');
@@ -103,11 +102,6 @@ Route::get('/asm/edit/{id}', 'AsmController@edit')->middleware(['auth'])->name('
 Route::any('/asm/modify/{id}', 'AsmController@modify')->middleware(['auth'])->name('asmupdate');
 Route::get('/asm/delete/{id}', 'AsmController@delete')->middleware(['auth'])->name('asmdelete');
 
-Route::get('/status/create','statusController@create')->middleware(['auth'])->name('status');
-Route::post('/status/save','statusController@save')->middleware(['auth'])->name('statussave');
-Route::get('/status/delete/{id}','statusController@delete')->middleware(['auth'])->name('statusdelete');
-Route::get('/status/edit/{id}','statusController@edit')->middleware(['auth'])->name('statusedit');
-Route::any('/status/modify/{id}','statusController@modify')->middleware(['auth'])->name('statusmodify');
 
 
 Route::get('/user/create', 'UserController@create')->middleware(['auth'])->name('usercreate');

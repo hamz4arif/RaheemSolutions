@@ -7,12 +7,12 @@
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">Type</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="Type Name" value="{{$model->name}}" name="name">
+      <input type="text" class="form-control inputbox" id="validationDefault01" placeholder="Type Name" value="{{$model->name}}" name="name">
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Status</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="status">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="status">
               @foreach($status as $key => $st)
                 <option value="{{$key}}" {{ ( $key == $model->status) ? 'selected' : '' }}>{{$st}}</option>
               @endforeach
@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Alias</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->alias}}" placeholder="Alias" name="alias" >
     </div>
   </div>
   <div class="form-row">
@@ -30,7 +30,7 @@
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Purpose</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="purpose">
+            <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="purpose">
               @foreach($purpose as $key => $sl)
                 <option value="{{$key}}" {{ ( $key == $model->purpose_id) ? 'selected' : '' }}>{{$sl->name}}</option>
               @endforeach
@@ -39,12 +39,12 @@
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault04">Description</label>
-      <input type="text" class="form-control" id="validationDefault04" value="{{$model->alias}}" placeholder="Description" name="description" >
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="{{$model->alias}}" placeholder="Description" name="description" >
     </div>
     <div class="col-md-4 mb-3">
         <div class="form-group">
             <label for="exampleFormControlSelect1">Item</label>
-            <select class="form-control multi-select" id="exampleFormControlSelect1" name="item[]" multiple>
+            <select class="form-control mainselectbox multi-select" id="exampleFormControlSelect1" name="item[]" multiple>
               @foreach($item as $key => $sl)
                 @if(!empty($item_id) && in_array($key,$item_id))
                 <option value="{{$key}}" selected>{{$sl->name}}</option>

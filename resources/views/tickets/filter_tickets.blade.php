@@ -20,7 +20,7 @@
         Owner
       </th>
       <th>
-        Created at
+        Status
       </th>
       <th class="text-right">
         Action
@@ -35,7 +35,7 @@
         <td>{{ isset($priority[$model->priority_id]) ? $priority[$model->priority_id]->name : '' }}</td>
         <td>{{ isset($type[$model->type_id]) ? $type[$model->type_id]->name : '' }}</td>
         <td>{{ isset($user_array[$model->user_id]) ? $user_array[$model->user_id]->name : '' }}</td>
-        <td>{{ date('d M, Y H:i:s', strtotime($model->created_at))}}</td>
+        <td>{{isset($model->status) ? $model->status : '' }}</td>
         <td class="text-right">
           <div class="btn-group" role="group" aria-label="Basic example">
             <a href="/ticket/edit/{{$model->id}}"><button type="button" class="btn btn-info">Update</button></a>&nbsp;

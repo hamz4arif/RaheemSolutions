@@ -150663,17 +150663,22 @@ select {
 
 /* Custom CSS */
 
-.tickettextbox {
-  height: 28px;
-  border-color: #AAAAAA;
+.inputbox{
+  height: 30px;
   border-radius: 5px;
-  padding: 5px;
-  font-size: 1rem;
+  padding: 7px;
+  border-color: #AAAAAA;
+  font-size: 14px;
+}
+.fileinputbox{
+  padding: 0px;
+  padding-top: 0px;
+  border: solid 1px #AAAAAA;
+  height: 30px;
+  border-radius: 5px;
+
 }
 
-.tickettextbox::placeholder {
-  font-size: 1rem;
-}
 
 .main-panel>.content {
   margin-top: -75px;
@@ -150682,7 +150687,6 @@ select {
 #tickettable_length select {
   width: 60px;
 }
-
 
 option::placeholder {
   color: red;
@@ -150693,7 +150697,7 @@ select {
   color: red;
 }
 
-.comments-inline{
+.comments-inline {
   padding: 10px;
   background: whitesmoke;
   border-radius: 3px;
@@ -150702,4 +150706,29 @@ select {
 
 .comments-inline p {
   padding-bottom: 10px;
+}
+
+#tickettable_length select{
+  height: 30px;
+  padding: 2px;
+  vertical-align: baseline;
+}
+#tickettable_filter input{
+  padding: 2px;
+  height: 30px;
+  vertical-align: baseline;
+}
+.form-group .mainselectbox{
+  height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  border-color: #AAAAAA;
+  padding: 5px;
+}
+.btn.dropdown-toggle.btn-light{
+  height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  border-color: #AAAAAA;
+  padding: 5px;
 }
