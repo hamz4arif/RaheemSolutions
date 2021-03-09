@@ -104,33 +104,33 @@
           <label for="exampleFormControlSelect1">Priority</label>
           <select class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="priority_id">
             @foreach($priority as $key => $st)
-           
+
             <option value="{{$st->priority_id}}" {{ ( $st->priority_id == $model->priority_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
           </select>
         </div>
       </div>
-     
-      
+
+
 
     </div>
     <div class="form-row">
-
       <div class="col-md-8 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Ticket Status</label>
-          <select required class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="status_id">
-            
-          <option value="1">Not Started</option>
-          <option value="2">In Progress</option>
-          <option value="3">Resolved</option>
-          <option value="4">Reopen</option>
-          <option value="5">Closed</option>
+          <select required class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="status">
+            <option value="Not Started" {{$model->status=="Not Started"?"selected":""}}>Not Started</option>
+            <option value="In Progress" {{$model->status=="In Progress"?"selected":""}}>In Progress</option>
+            <option value="Resolved" {{$model->status=="Resolved"?"selected":""}}>Resolved</option>
+            <option value="Reopen" {{$model->status=="Reopen"?"selected":""}}>Reopen</option>
+            <option value="Closed" {{$model->status=="Closed"?"selected":""}}>Closed</option>
+            }
+
           </select>
         </div>
       </div>
-      
-      
+
+
       <div class="col-md-4 mb-3">
         @if($model->image_name != "")
         <label for="link">Upload Publication File: ({{$model->image_name}})</label>
@@ -166,35 +166,29 @@
   <div class="col-md-12">
     <div class="card card-plain">
       <div class="card-header">
-        <h4 class="card-title"> User Comments</h4>
+        <h4 class="card-title h4"> User Comments</h4>
         <p class="category"> Comments by users are listed here</p>
       </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table">
-            <thead class=" text-primary">
-              <th>
-                User Name
-              </th>
-              <th>
-                Created at
-              </th>
-              <th class="text-right">
-                Comment
-              </th>
-            </thead>
-            <tbody>
-              @foreach ($comments_array as $user)
-              <tr>
-                <td>{{ isset($user_array[$user->user_id]) ? $user_array[$user->user_id]->name : '' }}</td>
-                <td>{{ date('d M, Y H:i:s', strtotime($user->created_at))}}</td>
-                <td class="text-right">{{ wordwrap($user->comment, 70, "\n", true) }}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+      <div class="card-body ">
+        @foreach ($comments_array as $user)
+        <div class="comments-inline">
+          <div class="row">
+            <div class="col-lg-12">
+              <p>{{ wordwrap($user->comment, 150, "\n", true) }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 text-left">
+              Comment By: <b> {{ isset($user_array[$user->user_id]) ? $user_array[$user->user_id]->name : '' }} </b>
+            </div>
+            <div class="col-lg-6 text-right">
+              <b> {{ date('d M, Y H:i:s', strtotime($user->created_at))}} </b>
+            </div>
+          </div>
         </div>
+        @endforeach
       </div>
     </div>
+  </div>
   </div>
   @endif

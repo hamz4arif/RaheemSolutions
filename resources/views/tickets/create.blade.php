@@ -36,7 +36,6 @@
                 'approval' => $approval,
                 'tickettype' => $tickettype,
                 'user_array' => $user_array,
-                'status_array'=>$status_array,
                 ])
             </div>
             

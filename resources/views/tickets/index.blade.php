@@ -19,6 +19,7 @@
             <a href="/ticket/index/Reopen" class="btn btn-primary ">Reopen</a>
             <a href="/ticket/index/Closed" class="btn btn-primary ">Closed</a>
           </div>
+          
 
           <div class="col-sm-4 text-right">
             <a href="/ticket/create"><button type="button" class="btn btn-success">Create</button></a>
@@ -34,6 +35,7 @@
 </div>
 
 @endsection
+
 
 @section('scripts')
 @endsection

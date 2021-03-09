@@ -118,7 +118,6 @@ class TicketController extends Controller
     public function edit($id)
     {
         $currentuser_id = auth()->user()->id;
-        $status_array = status::all()->keyBy('id');
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
         $comments_array = tsTicketComments::where("ticket_id", $id)->get();
@@ -147,7 +146,6 @@ class TicketController extends Controller
             'tickettype' => $tickettype_array,
             'comments_array' => $comments_array,
             'user_array' => $user_array,
-            'status_array' => $status_array,
         ]);
     }
 
@@ -161,7 +159,7 @@ class TicketController extends Controller
 
             $model = new Ticket();
             $model->staff_id = $staff_id;
-            $model->status = $request->post('status_id');
+            $model->status = $request->post('status');
             $model->category_id = $request->post('category_id');
             $model->type_id = $request->post('type_id');
             $model->destribution_id = $request->post('destribution_id');
@@ -206,10 +204,14 @@ class TicketController extends Controller
     {
         $staff_ids = $_POST['staff_id'];
         foreach ($staff_ids as $staff_id) {
-            $model = Ticket::where('id', $id)
-                ->firstOrFail();
+
+            $model = Ticket::where('id', $id)->firstOrFail();
+            $oldstatus = $model->status;
+            $user_name = \Illuminate\Support\Facades\Auth::user()->getname();
+
             $model->staff_id = $staff_id;
             $model->category_id = $request->post('category_id');
+            $model->status = $request->post('status');
             $model->type_id = $request->post('type_id');
             $model->destribution_id = $request->post('destribution_id');
             $model->source = $request->post('source');
@@ -235,6 +237,16 @@ class TicketController extends Controller
                 //dd();
                 Storage::disk('local')->put('images/1/smalls' . '/' . $folderName, $image, 'public');
             }
+
+            if ($model->save() && $request->post('status') != $oldstatus) {
+                $comment = new tsTicketComments;
+                $comment->ticket_id = $id;
+                $comment->comment = "Ticket Status is changed by ' " . $user_name . " ' from ' " . $oldstatus . " ' to ' " . $model->status . " '";
+                $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+                $comment->created_at = date('Y-m-d H:i:s');
+                $comment->save();
+            }
+
             if ($model->save() && $request->post('comment') != "") {
                 $comment = new tsTicketComments;
                 $comment->ticket_id = $id;
@@ -244,9 +256,9 @@ class TicketController extends Controller
                 $comment->save();
             }
         }
-        return redirect('/ticket/index');
+        return redirect('/ticket/edit/' . $id);
     }
-    
+
 
 
     public function delete($id)

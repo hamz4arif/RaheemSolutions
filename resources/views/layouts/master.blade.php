@@ -32,8 +32,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
-  
-  
+
+
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/now-ui-dashboard.css?v=1.5.0') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -57,6 +57,7 @@
       margin-top: 0px;
     }
   </style>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -210,12 +211,12 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li> -->
-              
+
               <li class="nav-item">
                 <a class="nav-link" href="/ticket/create">
                   <!-- <i class="now-ui-icons users_single-02"></i> -->
                   <i class="fas fa-plus-circle "></i>
-                   Create Ticket
+                  Create Ticket
                 </a>
               </li>
               <li class="nav-item">
@@ -282,14 +283,23 @@
   <script src="{{ asset('assets/demo/demo.js') }}"></script>
   <script src="{{ asset('js/select2.min.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
   @yield('scripts')
 </body>
 <script>
-      $(".ticketinput").select2({
-        placeholder: "Select",
-        allowClear: true,
-      });
-    </script>
+  // Data Table
+  $(document).ready(function() {
+    $('#tickettable').DataTable();
+  });
+</script>
+<!-- Multi selecter in ticket form -->
+<script>
+  $(".ticketinput").select2({
+    placeholder: "Select",
+    allowClear: true,
+  });
+</script>
+
 
 </html>
 
