@@ -12,6 +12,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
+                
 
             <div class="d-flex flex-row justify-content-between align-items-center">
                     <div><a class="btn btn-primary " href="/ticket/index"> <i class="fas fa-arrow-left fa-1x"></i></a></div>
@@ -35,8 +36,10 @@
                 'approval' => $approval,
                 'tickettype' => $tickettype,
                 'user_array' => $user_array,
+                'status_array'=>$status_array,
                 ])
             </div>
+            
         </div>
     </div>
 </div>

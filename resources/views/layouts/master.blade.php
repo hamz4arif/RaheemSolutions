@@ -118,6 +118,9 @@
                 <a href="/asm/index">Manage Asm</a>
               </li>
               <li>
+                <a href="/status/index">Manage Status</a>
+              </li>
+              <li>
                 <a href="/priority/index">Manage Priority</a>
               </li>
               <li>

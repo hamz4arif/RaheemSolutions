@@ -13,6 +13,7 @@ use App\Models\Staff;
 use App\Models\Distribution;
 use App\Models\tsTicketComments;
 use App\Models\User;
+use App\Models\status;
 
 class TicketController extends Controller
 {
@@ -29,6 +30,7 @@ class TicketController extends Controller
         $source_array = array("0" => "web", "1" => "app");
         $approval_array = array("0" => "No", "1" => "Yes");
         $tickettype_array = array("0" => "online", "1" => "on Site");
+        $status_array = status::all()->keyBy('id');
         $models = Ticket::all();
 
 
@@ -43,7 +45,40 @@ class TicketController extends Controller
             'staff' => $staff_array,
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
-            'user_array' => $user_array
+            'user_array' => $user_array,
+            "status_array" => $status_array,
+        ]);
+    }
+    public function filtertickets($id)
+    {
+        $priority_array = Priority::all()->keyBy('priority_id');
+        $user_array = User::all()->keyBy('id');
+        $department_array = Department::all()->keyBy('dprt_id');
+        $type_array = Type::all()->keyBy('type_id');
+        $staff_array = Staff::all()->keyBy('staff_id');
+        $category_array = Category::all()->keyBy('category_id');
+        $distribution_array = Distribution::all()->keyBy('id');
+        $source_array = array("0" => "web", "1" => "app");
+        $approval_array = array("0" => "No", "1" => "Yes");
+        $tickettype_array = array("0" => "online", "1" => "on Site");
+        $status_array = status::all()->keyBy('id');
+        $models = Ticket::where('status', $id)->get();
+
+
+
+        return view('tickets.index', [
+            'models' => $models,
+            'priority' => $priority_array,
+            'department' => $department_array,
+            'source' => $source_array,
+            'distribution' => $distribution_array,
+            'type' => $type_array,
+            'category' => $category_array,
+            'staff' => $staff_array,
+            'approval' => $approval_array,
+            'tickettype' => $tickettype_array,
+            'user_array' => $user_array,
+            "status_array" => $status_array,
         ]);
     }
 
@@ -60,6 +95,7 @@ class TicketController extends Controller
         $source_array = array("0" => "web", "1" => "app");
         $approval_array = array("0" => "No", "1" => "Yes");
         $tickettype_array = array("0" => "online", "1" => "on Site");
+        $status_array = status::all()->keyBy('id');
         $model = new Ticket;
 
         return view('tickets.create', [
@@ -74,14 +110,15 @@ class TicketController extends Controller
             'staff' => $staff_array,
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
-            'user_array' => $user_array
+            'user_array' => $user_array,
+            'status_array' => $status_array,
         ]);
     }
 
     public function edit($id)
     {
         $currentuser_id = auth()->user()->id;
-
+        $status_array = status::all()->keyBy('id');
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
         $comments_array = tsTicketComments::where("ticket_id", $id)->get();
@@ -109,7 +146,8 @@ class TicketController extends Controller
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
             'comments_array' => $comments_array,
-            'user_array' => $user_array
+            'user_array' => $user_array,
+            'status_array' => $status_array,
         ]);
     }
 
@@ -123,7 +161,7 @@ class TicketController extends Controller
 
             $model = new Ticket();
             $model->staff_id = $staff_id;
-            
+            $model->status = $request->post('status_id');
             $model->category_id = $request->post('category_id');
             $model->type_id = $request->post('type_id');
             $model->destribution_id = $request->post('destribution_id');
@@ -166,45 +204,50 @@ class TicketController extends Controller
 
     public function modify($id, Request $request)
     {
-        $model = Ticket::where('id', $id)
-            ->firstOrFail();
-        $model->staff_id = $request->post('staff_id');
-        $model->category_id = $request->post('category_id');
-        $model->type_id = $request->post('type_id');
-        $model->destribution_id = $request->post('destribution_id');
-        $model->source = $request->post('source');
-        $model->department_id = $request->post('department_id');
-        $model->approval = $request->post('approval');
-        $model->ticket_type = $request->post('ticket_type');
-        $model->ticket_counter = $request->post('ticket_counter');
-        $model->subject = $request->post('subject');
-        $model->description = $request->post('description');
-        $model->priority_id = $request->post('priority_id');
-        $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
-        if ($request->hasFile('image_name')) {
-            $image      = $request->file('image_name');
-            $model->image_name = $image->hashName();
-            $folderName = "uploaded";
-            // $img = Image::make($image->getRealPath());
-            // $img->resize(120, 120, function ($constraint) {
-            //     $constraint->aspectRatio();                 
-            // });
+        $staff_ids = $_POST['staff_id'];
+        foreach ($staff_ids as $staff_id) {
+            $model = Ticket::where('id', $id)
+                ->firstOrFail();
+            $model->staff_id = $staff_id;
+            $model->category_id = $request->post('category_id');
+            $model->type_id = $request->post('type_id');
+            $model->destribution_id = $request->post('destribution_id');
+            $model->source = $request->post('source');
+            $model->department_id = $request->post('department_id');
+            $model->approval = $request->post('approval');
+            $model->ticket_type = $request->post('ticket_type');
+            $model->ticket_counter = $request->post('ticket_counter');
+            $model->subject = $request->post('subject');
+            $model->description = $request->post('description');
+            $model->priority_id = $request->post('priority_id');
+            $model->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+            if ($request->hasFile('image_name')) {
+                $image      = $request->file('image_name');
+                $model->image_name = $image->hashName();
+                $folderName = "uploaded";
+                // $img = Image::make($image->getRealPath());
+                // $img->resize(120, 120, function ($constraint) {
+                //     $constraint->aspectRatio();                 
+                // });
 
-            // $img->stream(); // <-- Key point
+                // $img->stream(); // <-- Key point
 
-            //dd();
-            Storage::disk('local')->put('images/1/smalls' . '/' . $folderName, $image, 'public');
-        }
-        if ($model->save() && $request->post('comment') != "") {
-            $comment = new tsTicketComments;
-            $comment->ticket_id = $id;
-            $comment->comment = $request->post('comment');
-            $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
-            $comment->created_at = date('Y-m-d H:i:s');
-            $comment->save();
+                //dd();
+                Storage::disk('local')->put('images/1/smalls' . '/' . $folderName, $image, 'public');
+            }
+            if ($model->save() && $request->post('comment') != "") {
+                $comment = new tsTicketComments;
+                $comment->ticket_id = $id;
+                $comment->comment = $request->post('comment');
+                $comment->user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+                $comment->created_at = date('Y-m-d H:i:s');
+                $comment->save();
+            }
         }
         return redirect('/ticket/index');
     }
+    
+
 
     public function delete($id)
     {

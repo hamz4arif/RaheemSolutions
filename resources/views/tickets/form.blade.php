@@ -16,10 +16,7 @@
             @foreach($staff as $key => $st)
             <option value="{{$st->staff_id}}" {{ ( $st->staff_id == $model->staff_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
-
           </select>
-
-
         </div>
       </div>
       <div class="col-md-4 mb-3">
@@ -120,8 +117,19 @@
     <div class="form-row">
 
       <div class="col-md-8 mb-3">
-      
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Ticket Status</label>
+          <select required class="form-control tickettextbox ticketinput" id="exampleFormControlSelect1" name="status_id">
+            
+          <option value="1">Not Started</option>
+          <option value="2">In Progress</option>
+          <option value="3">Resolved</option>
+          <option value="4">Reopen</option>
+          <option value="5">Closed</option>
+          </select>
+        </div>
       </div>
+      
       
       <div class="col-md-4 mb-3">
         @if($model->image_name != "")
