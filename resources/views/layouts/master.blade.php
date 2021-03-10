@@ -84,70 +84,71 @@
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
+          <li class="{{request()->is('dashboard')?"active":""}}">
             <a href="/dashboard">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          
+          <li class="{{request()->is('ticket/*')?"active":""}}">
             <a href="/ticket/index" class="dropdown-toggless">
               <i class="now-ui-icons text_caps-small"></i>
               Tickets
             </a>
           </li>
-          <li>
+          <li >
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="now-ui-icons text_caps-small"></i>
               Configuration
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
-              <li>
+              <li class="{{request()->is('company/*')?"active":""}}">
                 <a href="/company/index">Manage Compnay</a>
               </li>
-              <li>
+              <li class="{{request()->is('campaign/*')?"active":""}}">
                 <a href="/campaign/index">Manage Campaign</a>
               </li>
-              <li>
+              <li class="{{request()->is('item/*')?"active":""}}">
                 <a href="/item/index">Manage Item</a>
               </li>
-              <li>
+              <li class="{{request()->is('department/*')?"active":""}}">
                 <a href="/department/index">Manage Department</a>
               </li>
-              <li>
+              <li class="{{request()->is('asm/*')?"active":""}}">
                 <a href="/asm/index">Manage Asm</a>
               </li>
               
-              <li>
+              <li class="{{request()->is('priority/*')?"active":""}}">
                 <a href="/priority/index">Manage Priority</a>
               </li>
-              <li>
+              <li class="{{request()->is('location/*')?"active":""}}">
                 <a href="/location/index">Manage Location</a>
               </li>
-              <li>
+              <li class="{{request()->is('client/*')?"active":""}}">
                 <a href="/client/index">Manage Client</a>
               </li>
-              <li>
+              <li class="{{request()->is('category/*')?"active":""}}">
                 <a href="/category/index">Manage Category</a>
               </li>
-              <li>
+              <li class="{{request()->is('type/*')?"active":""}}">
                 <a href="/type/index">Manage Type</a>
               </li>
-              <li>
+              <li class="{{request()->is('staff/*')?"active":""}}">
                 <a href="/staff/index">Manage Staff</a>
               </li>
               <?php if (Auth::user()->email == "ashher.azad@gmail.com" || Auth::user()->email == "asher@servex247.com"  || Auth::user()->email == "bilalamjad2772@outlook.com") { ?>
-                <li>
+                <li class="{{request()->is('user/*')?"active":""}}">
                   <a href="/user/index">Manage User</a>
                 </li>
               <?php } ?>
-              <li>
+              <li class="{{request()->is('group/*')?"active":""}}">
                 <a href="/group/index">Manage Group</a>
               </li>
-              <li>
+              <li class="{{request()->is('sla/*')?"active":""}}">
                 <a href="/sla/index">Manage SLA</a>
               </li>
-              <li>
+              <li class="{{request()->is('distribution/*')?"active":""}}">
                 <a href="/distribution/index">Manage Distribution</a>
               </li>
             </ul>

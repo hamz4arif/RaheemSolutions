@@ -12,12 +12,12 @@
 
         <div class="row">
           <div class="col-sm-8">
-            <a href="/ticket/index" class="btn btn-primary">ALL Tickets</a>
-            <a href="/ticket/index/Not Started" class="btn btn-primary ">Not Started</a>
-            <a href="/ticket/index/In Progress" class="btn btn-primary ">In Progress</a>
-            <a href="/ticket/index/Resolved" class="btn btn-primary ">Resolved</a>
-            <a href="/ticket/index/Reopen" class="btn btn-primary ">Reopen</a>
-            <a href="/ticket/index/Closed" class="btn btn-primary ">Closed</a>
+            <a href="/ticket/index" class="btn btn-primary {{request()->is('ticket/index')?"active":""}}">ALL Tickets</a>
+            <a href="/ticket/index/Not Started" class="btn btn-primary {{request()->is("ticket/index/Not"." "."Started")?"active":""}} ">Not Started</a>
+            <a href="/ticket/index/In Progress" class="btn btn-primary {{request()->is("ticket/index/In"." "."Progress")?"active":""}}">In Progress</a>
+            <a href="/ticket/index/Resolved" class="btn btn-primary {{request()->is("ticket/index/Resolved")?"active":""}}">Resolved</a>
+            <a href="/ticket/index/Reopen" class="btn btn-primary {{request()->is("ticket/index/Reopen")?"active":""}}">Reopen</a>
+            <a href="/ticket/index/Closed" class="btn btn-primary {{request()->is("ticket/index/Closed")?"active":""}}">Closed</a>
           </div>
           
 
