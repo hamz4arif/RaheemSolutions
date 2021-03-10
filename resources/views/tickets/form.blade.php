@@ -97,7 +97,7 @@
       </div>
       <div class="col-md-4 mb-3">
         <label for="validationDefault04">Ticket Counter</label>
-        <input type="number" class="form-control inputbox" id="validationDefault04" value="{{$model->ticket_counter}}" placeholder="Ticket Counter" name="ticket_counter">
+        <input disabled type="number" class="form-control inputbox" id="validationDefault04" value="{{$model->id}}" placeholder="Ticket Counter" name="ticket_counter">
       </div>
       <div class="col-md-4 mb-3">
         <div class="form-group">

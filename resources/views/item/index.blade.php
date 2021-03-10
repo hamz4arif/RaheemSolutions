@@ -10,7 +10,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-6">
-                    <h4 class="card-title"> Item Table</h4>
+                    <h5 class="card-title h5"> Item Table</h5>
                   </div>
                   <div class="col-sm-6 text-right">
                     <a href="/item/create"><button type="button" class="btn btn-success">Create</button></a>

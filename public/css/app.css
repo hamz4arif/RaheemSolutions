@@ -150733,3 +150733,12 @@ select {
   border-color: #AAAAAA;
   padding: 5px;
 }
+.btn-primary:not(:disabled):not(.disabled).active{
+  background-color: #18ce0f;
+    color: #FFFFFF;
+    box-shadow: none;
+    border-color: #fa7a50;
+}
+.btn-primary:hover{
+  background-color: #1BEB11;
+}

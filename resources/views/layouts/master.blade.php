@@ -91,13 +91,14 @@
             </a>
           </li>
           
-          <li class="{{request()->is('ticket/*')?"active":""}}">
+          <li class=" {{request()->is('ticket/*')?"active":""}}">
             <a href="/ticket/index" class="dropdown-toggless">
               <i class="now-ui-icons text_caps-small"></i>
               Tickets
             </a>
           </li>
-          <li >
+          
+          <li>
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="now-ui-icons text_caps-small"></i>
               Configuration

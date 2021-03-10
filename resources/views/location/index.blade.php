@@ -10,7 +10,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-6">
-                    <h4 class="card-title"> Location Table</h4>
+                    <h5 class="card-title h5"> Location Table</h5>
                   </div>
                   <div class="col-sm-6 text-right">
                     <a href="/location/create"><button type="button" class="btn btn-success">Create</button></a>

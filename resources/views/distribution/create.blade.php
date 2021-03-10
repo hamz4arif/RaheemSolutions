@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Create Distribution</h4>
+                <h5 class="card-title h5"> Create Distribution</h5>
               </div>
               <div class="card-body">
                     @include('distribution.form',[

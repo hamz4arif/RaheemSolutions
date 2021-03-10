@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Create Location</h4>
+                <h5 class="card-title h5"> Create Location</h5>
               </div>
               <div class="card-body">
                     @include('location.form',[

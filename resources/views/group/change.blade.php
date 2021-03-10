@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title"> Update Group</h4>
+                <h5 class="card-title h5"> Update Group</h5>
               </div>
               <div class="card-body">
                     @include('group.form',[
