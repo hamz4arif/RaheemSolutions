@@ -28,10 +28,10 @@
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationDefault04">Password</label>
+      <input type="text" class="form-control inputbox" id="validationDefault04" value="" placeholder="password" name="password" {{$model->password == "" ? "" : "" }}>
       @if($model->password != "")
         <div>if you want to update password then fill this if not then leave it blank!</div>
       @endif
-      <input type="text" class="form-control inputbox" id="validationDefault04" value="" placeholder="password" name="password" {{$model->password == "" ? "" : "" }}>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>

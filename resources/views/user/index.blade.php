@@ -10,10 +10,10 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-6">
-                    <h5 class="card-title h5"> Users Table</h5>
+                    <h5 class="card-title h5"> Profile</h5>
                   </div>
                   <div class="col-sm-6 text-right">
-                    <a href="/user/create"><button type="button" class="btn btn-success">Create</button></a>
+                    <!-- <a href="/user/create"><button type="button" class="btn btn-success">Create</button></a> -->
                   </div>
                 </div>
               </div>
@@ -22,10 +22,10 @@
                   <table class="table">
                     <thead class=" text-primary">
                     <th>
-                        Name
+                        ID
                       </th>
                       <th>
-                        Country
+                        Name
                       </th>
                       <th>
                         Email
@@ -38,20 +38,19 @@
                       </th>
                     </thead>
                     <tbody>
-                    @foreach ($models as $user)
                         <tr>
-                            <td>{{  $user->id }}</td>
-                            <td>{{  $user->name }}</td>
-                            <td>{{  $user->email }}</td>
-                            <td>{{  $user->created_at }}</td>
+                            <td>{{  $model->id }}</td>
+                            <td>{{  $model->name }}</td>
+                            <td>{{  $model->email }}</td>
+                            <td>{{  $model->created_at }}</td>
                             <td class="text-right">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                              <a href="/user/edit/{{$user->id}}"><button type="button" class="btn btn-info">Update</button></a>
-                              <!-- <a href="/user/delete/{{$user->id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
+                              <a href="/user/edit/{{$model->id}}"><button type="button" class="btn btn-info">Update</button></a>
+                              <!-- <a href="/user/delete/{{$model->id}}"><button type="button" class="btn btn-danger">Delete</button></a> -->
                             </div>
                             </td>
                         </tr>
-                    @endforeach
+                    
                     </tbody>
                   </table>
                 </div>

@@ -13,7 +13,6 @@ use App\Models\Staff;
 use App\Models\Distribution;
 use App\Models\tsTicketComments;
 use App\Models\User;
-use App\Models\status;
 
 class TicketController extends Controller
 {
@@ -30,8 +29,9 @@ class TicketController extends Controller
         $source_array = array("0" => "web", "1" => "app");
         $approval_array = array("0" => "No", "1" => "Yes");
         $tickettype_array = array("0" => "online", "1" => "on Site");
-        $status_array = status::all()->keyBy('id');
         $models = Ticket::all();
+        $user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+
 
 
         return view('tickets.index', [
@@ -46,7 +46,7 @@ class TicketController extends Controller
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
             'user_array' => $user_array,
-            "status_array" => $status_array,
+            'user_id'=>$user_id,
         ]);
     }
     public function filtertickets($id)
@@ -61,8 +61,10 @@ class TicketController extends Controller
         $source_array = array("0" => "web", "1" => "app");
         $approval_array = array("0" => "No", "1" => "Yes");
         $tickettype_array = array("0" => "online", "1" => "on Site");
-        $status_array = status::all()->keyBy('id');
         $models = Ticket::where('status', $id)->get();
+        $mytickets=Ticket::where('staff_id',$id)->get();
+        $user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+
 
 
 
@@ -78,7 +80,8 @@ class TicketController extends Controller
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
             'user_array' => $user_array,
-            "status_array" => $status_array,
+            'mytickets'=>$mytickets,
+            'user_id'=>$user_id,
         ]);
     }
 
@@ -95,7 +98,6 @@ class TicketController extends Controller
         $source_array = array("0" => "web", "1" => "app");
         $approval_array = array("0" => "No", "1" => "Yes");
         $tickettype_array = array("0" => "online", "1" => "on Site");
-        $status_array = status::all()->keyBy('id');
         $model = new Ticket;
 
         return view('tickets.create', [
@@ -111,7 +113,6 @@ class TicketController extends Controller
             'approval' => $approval_array,
             'tickettype' => $tickettype_array,
             'user_array' => $user_array,
-            'status_array' => $status_array,
         ]);
     }
 
@@ -257,6 +258,40 @@ class TicketController extends Controller
             }
         }
         return redirect('/ticket/edit/' . $id);
+    }
+    public function mytickets($id)
+    {
+        $mytickets=Ticket::where('staff_id',$id)->get();
+        $priority_array = Priority::all()->keyBy('priority_id');
+        $user_array = User::all()->keyBy('id');
+        $department_array = Department::all()->keyBy('dprt_id');
+        $type_array = Type::all()->keyBy('type_id');
+        $staff_array = Staff::all()->keyBy('staff_id');
+        $category_array = Category::all()->keyBy('category_id');
+        $distribution_array = Distribution::all()->keyBy('id');
+        $source_array = array("0" => "web", "1" => "app");
+        $approval_array = array("0" => "No", "1" => "Yes");
+        $tickettype_array = array("0" => "online", "1" => "on Site");
+        $user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+
+
+
+
+        return view('tickets.index', [
+            'models' => $mytickets,
+            'priority' => $priority_array,
+            'department' => $department_array,
+            'source' => $source_array,
+            'distribution' => $distribution_array,
+            'type' => $type_array,
+            'category' => $category_array,
+            'staff' => $staff_array,
+            'approval' => $approval_array,
+            'tickettype' => $tickettype_array,
+            'user_array' => $user_array,
+            'mytickets'=>$mytickets,
+            'user_id'=>$user_id,
+        ]);
     }
 
 

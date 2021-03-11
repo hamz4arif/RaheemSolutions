@@ -12,11 +12,14 @@ class UserController extends Controller
     public function index()
     {
         $company = Company::all()->keyBy('company_id');
-        $models = User::all();
+        $user_id = \Illuminate\Support\Facades\Auth::user()->getId();
+        $model = User::find($user_id);
+        
+        
 
 
         return view('user.index', [
-            'models' => $models,
+            'model' => $model,
             'status' => $company,
         ]);
     }

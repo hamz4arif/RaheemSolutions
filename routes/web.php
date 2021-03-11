@@ -40,6 +40,7 @@ Route::get('/priority/index', 'PriorityController@index')->middleware(['auth'])-
 Route::get('/sla/index', 'SlaController@index')->middleware(['auth'])->name('sla');
 Route::get('/ticket/index', 'TicketController@index')->middleware(['auth'])->name('ticket');
 Route::get('/ticket/index/{id}', 'TicketController@filtertickets')->middleware(['auth'])->name('inprogressticket');
+Route::get('/ticket/{id}', 'TicketController@mytickets')->middleware(['auth'])->name('inprogressticket');
 
 
 Route::get('/location/create', 'LocationController@create')->middleware(['auth'])->name('locationcreate');

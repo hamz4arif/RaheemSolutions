@@ -90,7 +90,7 @@
               <p>Dashboard</p>
             </a>
           </li>
-          
+
           <li class=" {{request()->is('ticket/*')?"active":""}}">
             <a href="/ticket/index" class="dropdown-toggless">
               <i class="now-ui-icons text_caps-small"></i>
@@ -98,12 +98,17 @@
             </a>
           </li>
           
-          <li>
+          <li class="{{\Illuminate\Support\Facades\Auth::user()->getId()==3||\Illuminate\Support\Facades\Auth::user()->getId()==15||\Illuminate\Support\Facades\Auth::user()->getId()==3?"hidden":""}}">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="now-ui-icons text_caps-small"></i>
               Configuration
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
+            <?php if (Auth::user()->email == "ashher.azad@gmail.com" || Auth::user()->email == "asher@servex247.com"  || Auth::user()->email == "bilalamjad2772@outlook.com") { ?>
+                <li class="{{request()->is('user/*')?"active":""}}">
+                  <a href="/user/index">Manage Profile</a>
+                </li>
+              <?php } ?>
               <li class="{{request()->is('company/*')?"active":""}}">
                 <a href="/company/index">Manage Compnay</a>
               </li>
@@ -119,7 +124,7 @@
               <li class="{{request()->is('asm/*')?"active":""}}">
                 <a href="/asm/index">Manage Asm</a>
               </li>
-              
+
               <li class="{{request()->is('priority/*')?"active":""}}">
                 <a href="/priority/index">Manage Priority</a>
               </li>
@@ -138,11 +143,7 @@
               <li class="{{request()->is('staff/*')?"active":""}}">
                 <a href="/staff/index">Manage Staff</a>
               </li>
-              <?php if (Auth::user()->email == "ashher.azad@gmail.com" || Auth::user()->email == "asher@servex247.com"  || Auth::user()->email == "bilalamjad2772@outlook.com") { ?>
-                <li class="{{request()->is('user/*')?"active":""}}">
-                  <a href="/user/index">Manage User</a>
-                </li>
-              <?php } ?>
+              
               <li class="{{request()->is('group/*')?"active":""}}">
                 <a href="/group/index">Manage Group</a>
               </li>
@@ -196,20 +197,8 @@
                     <span class="d-lg-none d-md-block">Stats</span>
                   </p>
                 </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons location_world"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
               </li> -->
+              
 
               <li class="nav-item">
                 <a class="nav-link" href="/ticket/create">
@@ -218,14 +207,26 @@
                   Create Ticket
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="now-ui-icons users_single-02"></i>
+                  <p>
+                    @yield('username')
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="/user/index">Profile</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </li>
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="/logout">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     @yield('username')
                   </p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
