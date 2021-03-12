@@ -150663,22 +150663,21 @@ select {
 
 /* Custom CSS */
 
-.inputbox{
+.inputbox {
   height: 30px;
   border-radius: 5px;
   padding: 7px;
   border-color: #AAAAAA;
   font-size: 14px;
 }
-.fileinputbox{
+
+.fileinputbox {
   padding: 0px;
   padding-top: 0px;
   border: solid 1px #AAAAAA;
   height: 30px;
   border-radius: 5px;
-
 }
-
 
 .main-panel>.content {
   margin-top: -75px;
@@ -150708,17 +150707,19 @@ select {
   padding-bottom: 10px;
 }
 
-#tickettable_length select{
+#tickettable_length select {
   height: 30px;
   padding: 2px;
   vertical-align: baseline;
 }
-#tickettable_filter input{
+
+#tickettable_filter input {
   padding: 2px;
   height: 30px;
   vertical-align: baseline;
 }
-.form-group .mainselectbox{
+
+.form-group .mainselectbox {
   height: 30px;
   border-radius: 5px;
   font-size: 14px;
@@ -150726,19 +150727,26 @@ select {
   padding: 5px;
 }
 
-.btn.dropdown-toggle.btn-light{
+.btn.dropdown-toggle.btn-light {
   height: 30px;
   border-radius: 5px;
   font-size: 14px;
   border-color: #AAAAAA;
   padding: 5px;
 }
-.btn-primary:not(:disabled):not(.disabled).active{
+
+.btn-primary:not(:disabled):not(.disabled).active {
   background-color: #18ce0f;
-    color: #FFFFFF;
-    box-shadow: none;
-    border-color: #fa7a50;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-color: #fa7a50;
 }
-.btn-primary:hover{
+
+.highlightedTest {
+  color: #8d8dd0;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
   background-color: #1BEB11;
 }

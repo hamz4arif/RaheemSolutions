@@ -97,8 +97,7 @@
               Tickets
             </a>
           </li>
-          
-          <li class="{{\Illuminate\Support\Facades\Auth::user()->getId()==3||\Illuminate\Support\Facades\Auth::user()->getId()==15||\Illuminate\Support\Facades\Auth::user()->getId()==3?"hidden":""}}">
+          <li class="{{\Illuminate\Support\Facades\Auth::user()->role=="admin"||\Illuminate\Support\Facades\Auth::user()->role=="manager"?"":"hidden"}}">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
               <i class="now-ui-icons text_caps-small"></i>
               Configuration
@@ -110,7 +109,7 @@
                 </li>
               <?php } ?>
               <li class="{{request()->is('company/*')?"active":""}}">
-                <a href="/company/index">Manage Compnay</a>
+                <a href="/company/index">Manage Company</a>
               </li>
               <li class="{{request()->is('campaign/*')?"active":""}}">
                 <a href="/campaign/index">Manage Campaign</a>
@@ -215,7 +214,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="/user/index">Profile</a>
+                  <a class="dropdown-item" href="/user/edit/{{\Illuminate\Support\Facades\Auth::user()->getId()}}">Profile</a>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
               </li>

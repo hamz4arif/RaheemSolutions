@@ -259,9 +259,12 @@ class TicketController extends Controller
         }
         return redirect('/ticket/edit/' . $id);
     }
-    public function mytickets($id)
+    public function mytickets($email)
     {
-        $mytickets=Ticket::where('staff_id',$id)->get();
+        $staff=Staff::where('email',$email)->firstorFail();
+        $staff_id=$staff->staff_id;
+        
+        $mytickets=Ticket::where('staff_id',$staff_id)->get();
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
         $department_array = Department::all()->keyBy('dprt_id');

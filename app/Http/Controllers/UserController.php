@@ -13,21 +13,23 @@ class UserController extends Controller
     {
         $company = Company::all()->keyBy('company_id');
         $user_id = \Illuminate\Support\Facades\Auth::user()->getId();
-        $model = User::find($user_id);
+        $models = User::all();
         
         
 
 
         return view('user.index', [
-            'model' => $model,
+            'models' => $models,
             'status' => $company,
         ]);
     }
 
     public function create(){
         $model = new User;
+        $models = User::all();
         $company = Company::all()->keyBy('company_id');
         return view('user.create', [
+            'models'=>$models,
             'model' => $model,
             'company' => $company,
         ]);
@@ -47,6 +49,7 @@ class UserController extends Controller
         $model = new User();
         $model->name = $request->post('name');
         $model->email = $request->post('email');
+        $model->role = $request->post('role');
         if($request->post('password') != ""){
             $model->password = Hash::make($request->post('password'));
         }
@@ -62,6 +65,7 @@ class UserController extends Controller
         $model = User::find($id);
         $model->name = $request->post('name');
         $model->email = $request->post('email');
+        $model->role = $request->post('role');
         if($request->post('password') != ""){
             $model->password = Hash::make($request->post('password'));
         }

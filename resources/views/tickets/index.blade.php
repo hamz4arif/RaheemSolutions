@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-sm-9">
             <a href="/ticket/index" class="btn btn-primary {{request()->is('ticket/index')?"active":""}}">ALL Tickets</a>
-            <a href="/ticket/{{$user_id}}" class="btn btn-primary {{request()->is("ticket/$user_id")?"active":""}}">My Tickets</a>
+            <a href="/ticket/{{\Illuminate\Support\Facades\Auth::user()->email}}" class="btn btn-primary {{request()->is("ticket/$user_id")?"active":""}}">My Tickets</a>
             <a href="/ticket/index/Not Started" class="btn btn-primary {{request()->is("ticket/index/Not"." "."Started")?"active":""}} ">Not Started</a>
             <a href="/ticket/index/In Progress" class="btn btn-primary {{request()->is("ticket/index/In"." "."Progress")?"active":""}}">In Progress</a>
             <a href="/ticket/index/Resolved" class="btn btn-primary {{request()->is("ticket/index/Resolved")?"active":""}}">Resolved</a>
@@ -22,8 +22,6 @@
           </div>
           
           
-          
-
           <div class="col-sm-3 text-right">
             <a href="/ticket/create"><button type="button" class="btn btn-success">Create</button></a>
           </div>

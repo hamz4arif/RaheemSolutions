@@ -41,10 +41,10 @@
       </div>
       <div class="col-md-4 mb-3">
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Distribution</label>
+          <label for="exampleFormControlSelect1">Distribution (distribution ID - distribution Name)</label>
           <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="destribution_id">
             @foreach($distribution as $key => $st)
-            <option value="{{$st->id}}" {{ ( $st->id == $model->destribution_id) ? 'selected' : '' }}>{{$st->name}}</option>
+            <option value="{{$st->id}}" {{ ( $st->id == $model->destribution_id) ? 'selected' : '' }}>{{$st->id}} - {{$st->name}}</option>
             @endforeach
           </select>
         </div>
