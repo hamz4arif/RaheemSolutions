@@ -18,7 +18,7 @@
             <label for="exampleFormControlSelect1">Company</label>
             <select class="form-control mainselectbox" id="exampleFormControlSelect1" name="company">
               @foreach($company as $key => $st)
-                <option value="{{$key}}" {{ ( $key == $model->company) ? 'selected' : '' }}>{{$st->name}}</option>
+                <option value="{{$key}}" {{ ( $key == $model->company_id) ? 'selected' : '' }}>{{$st->name}}</option>
               @endforeach
             </select>
         </div>

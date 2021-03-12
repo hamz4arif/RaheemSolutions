@@ -105,7 +105,7 @@
             <ul class="collapse list-unstyled" id="homeSubmenu">
             <?php if (Auth::user()->email == "ashher.azad@gmail.com" || Auth::user()->email == "asher@servex247.com"  || Auth::user()->email == "bilalamjad2772@outlook.com") { ?>
                 <li class="{{request()->is('user/*')?"active":""}}">
-                  <a href="/user/index">Manage Profile</a>
+                  <a href="/user/index">Manage Users</a>
                 </li>
               <?php } ?>
               <li class="{{request()->is('company/*')?"active":""}}">

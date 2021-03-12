@@ -10,7 +10,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-6">
-                    <h5 class="card-title h5"> Profile</h5>
+                    <h5 class="card-title h5"> Users</h5>
                   </div>
                   <div class="col-sm-6 text-right">
                     <a href="/user/create"><button type="button" class="btn btn-success {{\Illuminate\Support\Facades\Auth::user()->getId()==3||\Illuminate\Support\Facades\Auth::user()->getId()==15||\Illuminate\Support\Facades\Auth::user()->getId()==17?"":"hidden"}}">Create</button></a>

@@ -75,7 +75,7 @@ class UserController extends Controller
         $model->save();
         $model->save();
 
-        return redirect('/user/index');
+        return redirect('/user/edit/'.$id);
     
     }
 

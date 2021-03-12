@@ -263,7 +263,6 @@ class TicketController extends Controller
     {
         $staff=Staff::where('email',$email)->firstorFail();
         $staff_id=$staff->staff_id;
-        
         $mytickets=Ticket::where('staff_id',$staff_id)->get();
         $priority_array = Priority::all()->keyBy('priority_id');
         $user_array = User::all()->keyBy('id');
