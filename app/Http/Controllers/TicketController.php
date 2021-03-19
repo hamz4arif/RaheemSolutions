@@ -154,8 +154,10 @@ class TicketController extends Controller
     {
         // echo $request->input('ticket_id');
         // exit;
+        $distribution_ids=$_POST['destribution_id'];
         $staff_ids = $_POST['staff_id'];
         foreach ($staff_ids as $staff_id) {
+            foreach($distribution_ids as $distribution_id){
             # code...
 
             $model = new Ticket();
@@ -163,7 +165,7 @@ class TicketController extends Controller
             $model->status = $request->post('status');
             $model->category_id = $request->post('category_id');
             $model->type_id = $request->post('type_id');
-            $model->destribution_id = $request->post('destribution_id');
+            $model->destribution_id = $distribution_id;
             $model->source = $request->post('source');
             $model->department_id = $request->post('department_id');
             $model->approval = $request->post('approval');
@@ -198,13 +200,16 @@ class TicketController extends Controller
                 Storage::disk('local')->put('images/1/smalls' . '/' . $fileName, $image, 'public');
             }
         }
+    }
         return redirect('/ticket/index');
     }
 
     public function modify($id, Request $request)
     {
         $staff_ids = $_POST['staff_id'];
+        $distribution_ids=$_POST['destribution_id'];
         foreach ($staff_ids as $staff_id) {
+            foreach($distribution_ids as $distribution_id){
 
             $model = Ticket::where('id', $id)->firstOrFail();
             $oldstatus = $model->status;
@@ -214,7 +219,7 @@ class TicketController extends Controller
             $model->category_id = $request->post('category_id');
             $model->status = $request->post('status');
             $model->type_id = $request->post('type_id');
-            $model->destribution_id = $request->post('destribution_id');
+            $model->destribution_id = $distribution_id;
             $model->source = $request->post('source');
             $model->department_id = $request->post('department_id');
             $model->approval = $request->post('approval');
@@ -257,6 +262,7 @@ class TicketController extends Controller
                 $comment->save();
             }
         }
+    }
         return redirect('/ticket/edit/' . $id);
     }
     public function mytickets($email)

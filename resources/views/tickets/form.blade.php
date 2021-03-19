@@ -32,7 +32,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Type</label>
-          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="type_id">
+          <select  class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="type_id">
             @foreach($type as $key => $st)
             <option value="{{$st->type_id}}" {{ ( $st->type_id == $model->type_id) ? 'selected' : '' }}>{{$st->name}}</option>
             @endforeach
@@ -42,7 +42,7 @@
       <div class="col-md-4 mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Distribution (distribution ID - distribution Name)</label>
-          <select class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="destribution_id">
+          <select multiple class="form-control selectbox ticketinput" id="exampleFormControlSelect1" name="destribution_id[]">
             @foreach($distribution as $key => $st)
             <option value="{{$st->id}}" {{ ( $st->id == $model->destribution_id) ? 'selected' : '' }}>{{$st->id}} - {{$st->name}}</option>
             @endforeach
@@ -145,11 +145,12 @@
     
     
   </div> -->
+  {{$model->description}}
     <div class="form-row">
       <div class="col-md-12">
         <label for="validationDefault04">Description</label>
         <br>
-        <textarea {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} id="validationDefault04" cols="130" rows="5" value="{{$model->description}}" name="description"></textarea>
+        <textarea {{$model->user_id && $model->user_id!=$currentuser_id?"disabled":""}} id="validationDefault04" cols="130" rows="5" name="description"> {{$model->description}}</textarea>
       </div>
     </div>
     <div class="form-row">
